@@ -1,0 +1,33 @@
+.preheader {
+  padding: 10px 0;
+  background-color: var(--color-alabaster);
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    &:nth-last-child(-n + 4) {
+      margin-right: var(--small-offset);
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:nth-child(-n + 3) {
+      margin-right: var(--small-offset);
+    }
+
+    &:nth-child(5) {
+      margin-left: auto;
+    }
+  }
+
+  &__link {
+    font: var(--font-solomon-regular);
+    font-size: 13px;
+    color: var(--color-dusty-gray);
+  }
+}

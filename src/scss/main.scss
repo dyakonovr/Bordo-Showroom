@@ -1,0 +1,34 @@
+// @import 'vars'; если используете scss-переменные - подключите сюда vars, но удалите root из _vars.scss
+
+@import "./components/header";
+@import "./components/preheader";
+@import "./components/slider";
+
+.icon-inst {
+  &::before {
+    background-image: url("../img/inst.svg");
+  }
+}
+
+.icon-whats {
+  &::before {
+    background-image: url("../img/phone.svg");
+  }
+}
+
+.icon-inst,
+.icon-whats {
+  &::before {
+    content: "";
+    display: inline-block;
+    margin-bottom: -3px;
+    width: 15px;
+    height: 15px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  a {
+    padding-left: 10px;
+  }
+}

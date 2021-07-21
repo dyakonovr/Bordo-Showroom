@@ -1,0 +1,60 @@
+.header {
+  &__container {
+    display: flex;
+    align-items: center;
+    padding: var(--small-offset);
+  }
+
+  .nav {
+    margin-right: 70px;
+
+    &__list {
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+    }
+
+    &__item {
+      &:not(:last-child) {
+        margin-right: var(--small-offset);
+      }
+    }
+
+    &__link {
+      font: var(--font-solomon-regular);
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  &__item {
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    &:not(:last-child) {
+      margin-right: var(--big-offset);
+    }
+
+    &--acc {
+      background-image: url("../img/acc.svg");
+    }
+
+    &--search {
+      background-image: url("../img/search.svg");
+    }
+
+    &--heart {
+      background-image: url("../img/heart.svg");
+    }
+
+    &--cart {
+      background-image: url("../img/cart.svg");
+    }
+  }
+}
