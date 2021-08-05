@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#111111">
+  <title>Bordo</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div class="site-container">
+    @include('partials/preloader.html')
+    @include('partials/header.html')
+    <main>
+      <section class="roster">
+        <div class="container roster__container">
+          <div class="roster__left">
+            <h1 class="roster__title subtitle">Каталог</h1>
+            <ul class="roster__list">
+              <li class="roster__item"><a href="#" class="roster__link">Джемперы и свитшоты</a></li>
+              <li class="roster__item"><a href="#" class="roster__link">Аксессуары</a></li>
+              <li class="roster__item"><a href="#" class="roster__link">Юбки и платья</a></li>
+              <li class="roster__item"><a href="#" class="roster__link">Брюки и шорты</a></li>
+              <li class="roster__item"><a href="#" class="roster__link">Футболки и рубашки</a></li>
+              <li class="roster__item"><a href="#" class="roster__link">Купальники и боди</a></li>
+              <li class="roster__item"><a href="#" class="roster__link">Верхняя одежда</a></li>
+              <li class="roster__item"><a href="#" class="roster__link">Жакеты и пиджаки</a></li>
+              <li class="roster__item"><a href="#" class="roster__link">Костюмы и комбинезоны</a></li>
+            </ul>
+          </div>
+          <div class="roster__right">
+            @include('partials/discount.html')
+            @include('partials/lists.html')
+          </div>
+        </div>
+      </section>
+    </main>
+    @include('partials/footer.html')
+  </div>
+  <script src="js/vendor.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

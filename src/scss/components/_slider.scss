@@ -1,6 +1,14 @@
+@import "../mixins";
+
 .swiper {
   &-slide {
     position: relative;
+  }
+
+  &-pagination {
+    @include small-screen {
+      display: none;
+    }
   }
 
   &-pagination-bullet {
@@ -47,7 +55,7 @@
     b {
       animation-name: countingBar;
       animation-duration: 3s;
-      animation-timing-function: ease-in;
+      animation-timing-function: linear;
       animation-iteration-count: 1;
       animation-direction: alternate;
       animation-fill-mode: forwards;
@@ -60,7 +68,7 @@
     }
 
     100% {
-      width: 100%;
+      width: 30px;
     }
   }
 }
@@ -78,6 +86,10 @@
       top: 50%;
       text-align: center;
       transform: translate(-50%, -50%);
+
+      @include large-screen {
+        top: 60%;
+      }
     }
 
     &__title {
@@ -85,6 +97,14 @@
       font: var(--font-bodoni);
       font-size: 70px;
       color: var(--color-white);
+
+      @include xlarge-screen {
+        font-size: 50px;
+      }
+
+      @include large-screen {
+        font-size: 30px;
+      }
     }
 
     &__descr {
@@ -92,6 +112,10 @@
       font: var(--font-solomon-regular);
       font-size: 20px;
       color: var(--color-white);
+
+      @include large-screen {
+        display: none;
+      }
     }
   }
 }

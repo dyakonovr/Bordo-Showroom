@@ -1,0 +1,10 @@
+.info {
+  &__container {
+    padding: 0 95px;
+  }
+
+  &__text {
+    font: var(--font-solomon-regular);
+    color: var(--color-gray);
+  }
+}

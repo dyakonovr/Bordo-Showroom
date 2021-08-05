@@ -18,9 +18,13 @@
     @include('partials/preloader.html')
     @include('partials/header.html')
     <main>
-      @include('partials/slider.html')
-      @include('partials/lists.html')
-      @include('partials/discount.html')
+      <section class="favorite">
+        <div class="container">
+          <h1 class="favorite__title subtitle">Избранное</h1>
+          <ul class="favorite__list">
+          </ul>
+        </div>
+      </section>
     </main>
     @include('partials/footer.html')
   </div>

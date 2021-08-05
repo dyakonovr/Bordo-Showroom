@@ -18,9 +18,15 @@
     @include('partials/preloader.html')
     @include('partials/header.html')
     <main>
-      @include('partials/slider.html')
-      @include('partials/lists.html')
-      @include('partials/discount.html')
+      <section class="cart">
+        <div class="container custom-container">
+          <h1 class="cart__title subtitle">Корзина</h1>
+          <ul class="cart__list">
+            
+          </ul>
+          <a href="#" class="cart__btn btn btn--primary">Перейти к оформлению</a>
+        </div>
+      </section>
     </main>
     @include('partials/footer.html')
   </div>

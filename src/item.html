@@ -18,9 +18,14 @@
     @include('partials/preloader.html')
     @include('partials/header.html')
     <main>
-      @include('partials/slider.html')
-      @include('partials/lists.html')
-      @include('partials/discount.html')
+      <section class="item">
+        <div class="container item__container">
+          <div class="item__upper"></div>
+          <div class="item__lower">
+            @include('partials/lists.html')
+          </div>
+        </div>
+      </section>
     </main>
     @include('partials/footer.html')
   </div>
