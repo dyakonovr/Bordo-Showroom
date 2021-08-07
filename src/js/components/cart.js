@@ -1,87 +1,125 @@
 const cartSection = document.querySelector('.cart__list');
 
+const emptyCheck = (storage) => {
+  if (storage.length == 0) {
+    cartSection.innerHTML += `<li class="empty">Тут пусто..</li>`;
+    let btn = document.querySelector('.cart__btn');
+    btn.classList.add('btn--disabled');
+    btn.setAttribute('disabled', 'disabled');
+  }
+};
+
+const cartRender = (arr) => {
+  fetch("../data/data.json")
+    .then((response) => {
+      return response.json()
+    })
+    .then((data) => {
+      data.forEach((el) => {
+        arr.forEach((element) => {
+          if (element.category == el.title) {
+            el.products.forEach((prod) => {
+              if (prod.title == element.title) {
+                console.log(prod);
+                const prodSizes = prod.sizes;
+                const currSize = prodSizes.indexOf(element.size);
+                [prodSizes[0], prodSizes[currSize]] = [prodSizes[currSize], prodSizes[0]];
+                cartSection.innerHTML += `
+                          <li class="cart-item" data-code="${prod.chars.Артикул}" data-category="${element.category}">
+                            <img src="${prod.mainImage}" alt="${prod.title}" class="cart-item__img">
+                            <div class="cart-item__text">
+                              <span class="cart-item__art art-text">АРТ 6789765432</span>
+                              <a href="item.html" class="cart-item__name name-js">${prod.title}</a>
+                            </div>
+                            <span class="cart-item__price price">${prod.price}&nbsp;&#8381;</span>
+                            <select name="sizes" class="cart-item__select custom-select">
+                              <option value="${prodSizes[0]}" class="cart-item__option custom-option">${prodSizes[0]}</option>
+                              <option value="${prodSizes[1]}" class="cart-item__option custom-option">${prodSizes[1]}</option>
+                              <option value="${prodSizes[2]}" class="cart-item__option custom-option">${prodSizes[2]}</option>
+                              <option value="${prodSizes[3]}" class="cart-item__option custom-option">${prodSizes[3]}</option>
+                            </select>
+                            <div class="cart-item__counter">
+                              <button class="cart-item__btn cart-item__btn--minus btn-minus"></button>
+                              <input type="text" class="cart-item__number input-number" value="1" disabled="disabled" />
+                              <button class="cart-item__btn cart-item__btn--plus btn-plus"></button>
+                            </div>
+                            <button type="button" class="cart-item__delete btn--delete btn-delete-js"></button>
+                          </li>
+                      `;
+              }
+            });
+          }
+        });
+      })
+      return arr;
+    })
+    .then((arr) => {
+      deleteItem(arr);
+      quantityChange();
+      goToItem();
+    })
+
+  const quantityChange = function () {
+    let plusBtns = document.querySelectorAll('.btn-plus');
+    let minusBtns = document.querySelectorAll('.btn-minus');
+
+    plusBtns.forEach((btn) => {
+      btn.addEventListener('click', function (e) {
+        let input = btn.parentElement.querySelector('.input-number');
+        let quantity = input.getAttribute('value');
+        (quantity >= 1) ? input.setAttribute('value', ++quantity) : input.setAttribute('value', quantity);
+      });
+    });
+
+    minusBtns.forEach((btn) => {
+      btn.addEventListener('click', function (e) {
+        let input = btn.parentElement.querySelector('.input-number');
+        let quantity = input.getAttribute('value');
+        (quantity >= 2) ? input.setAttribute('value', --quantity) : input.setAttribute('value', quantity);
+      });
+    });
+  }
+
+  const deleteItem = function (itemsArr) {
+    let deleteBtns = document.querySelectorAll('.btn-delete-js');
+    deleteBtns.forEach((btn) => {
+      btn.addEventListener('click', function () {
+        let parent = btn.parentElement;
+        let code = parent.dataset.index;
+        parent.remove();
+        itemsArr.forEach((el) => {
+          if (el.code == code) {
+            let index = itemsArr.indexOf(el);
+            delete itemsArr[index];
+            itemsArr = itemsArr.filter(n => n);
+            localStorage.setItem('cart', JSON.stringify(itemsArr));
+          }
+        });
+        emptyCheck(itemsArr);
+      });
+    });
+  }
+
+  const goToItem = function () {
+    const names = document.querySelectorAll('.name-js');
+    names.forEach((name) => {
+      name.addEventListener('click', function (e) {
+        const item = e.target.closest('.cart-item');
+        const code = item.dataset.code;
+        const title = item.dataset.category;
+        localStorage.setItem('item', JSON.stringify({ title, code }));
+      });
+    });
+  }
+}
+
 const cartLogic = function () {
   let itemsArr;
-  (localStorage.getItem('current_cart')) ? itemsArr = JSON.parse(localStorage.getItem('current_cart')) : itemsArr = [];
-
-  const emptyCheck = (storage) => {
-    if (storage.length == 0) {
-      cartSection.innerHTML += `<li class="empty">Тут пусто..</li>`;
-      let btn = document.querySelector('.cart__btn');
-      btn.classList.add('btn--disabled');
-      btn.setAttribute('disabled', 'disabled');
-    }
-  };
-
-  const itemRender = (itemsArr) => {
-    for (let i = 0; i < itemsArr.length; i++) {
-      const item = itemsArr[i];
-      console.log(item);
-      cartSection.innerHTML += `
-            <li class="cart-item" data-index="${item.code}">
-              <img src="${item.mainImage}" alt="" class="cart-item__img">
-              <div class="cart-item__text">
-                <span class="cart-item__art art-text">АРТ 6789765432</span>
-                <p class="cart-item__name">${item.title}</p>
-              </div>
-              <span class="cart-item__price price">${item.price}&nbsp;&#8381;</span>
-              <select name="sizes" class="cart-item__select custom-select">
-                <option value="XS" class="cart-item__option custom-option">${item.sizes[0]}</option>
-                <option value="XS" class="cart-item__option custom-option">${item.sizes[1]}</option>
-                <option value="XS" class="cart-item__option custom-option">${item.sizes[2]}</option>
-                <option value="XS" class="cart-item__option custom-option">${item.sizes[3]}</option>
-              </select>
-              <div class="cart-item__counter">
-                <button class="cart-item__btn cart-item__btn--minus btn-minus"></button>
-                <input type="text" class="cart-item__number input-number" value="${item.quantity}" disabled="disabled" />
-                <button class="cart-item__btn cart-item__btn--plus btn-plus"></button>
-              </div>
-              <button type="button" class="cart-item__delete btn--delete btn-delete-js"></button>
-            </li>
-        `;
-    }
-  }
+  (localStorage.getItem('cart')) ? itemsArr = JSON.parse(localStorage.getItem('cart')) : itemsArr = [];
 
   cartSection.innerHTML = '';
   emptyCheck(itemsArr);
-  itemRender(itemsArr);
-
-  let plusBtns = document.querySelectorAll('.btn-plus');
-  let minusBtns = document.querySelectorAll('.btn-minus');
-  let deleteBtns = document.querySelectorAll('.btn-delete-js');
-
-  plusBtns.forEach((btn) => {
-    btn.addEventListener('click', function (e) {
-      let input = btn.parentElement.querySelector('.input-number');
-      let quantity = input.getAttribute('value');
-      (quantity >= 1) ? input.setAttribute('value', ++quantity) : input.setAttribute('value', quantity);
-    });
-  });
-
-  minusBtns.forEach((btn) => {
-    btn.addEventListener('click', function (e) {
-      let input = btn.parentElement.querySelector('.input-number');
-      let quantity = input.getAttribute('value');
-      (quantity >= 2) ? input.setAttribute('value', --quantity) : input.setAttribute('value', quantity);
-    });
-  });
-
-  deleteBtns.forEach((btn) => {
-    btn.addEventListener('click', function () {
-      let parent = btn.parentElement;
-      let code = parent.dataset.index;
-      parent.remove();
-      itemsArr.forEach((el) => {
-        if (el.code == code) {
-          let index = itemsArr.indexOf(el);
-          delete itemsArr[index];
-          itemsArr = itemsArr.filter(n => n);
-          localStorage.setItem('current_cart', JSON.stringify(itemsArr));
-        }
-      });
-      emptyCheck(itemsArr);
-    });
-  });
+  cartRender(itemsArr);
 }
 
 if (cartSection) cartLogic();

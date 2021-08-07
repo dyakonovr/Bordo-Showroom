@@ -93,6 +93,7 @@
 
     &__link {
       font: var(--font-solomon-regular);
+      font-size: 15px;
 
       @include xlarge-screen {
         font-size: 14px;
@@ -132,7 +133,7 @@
     }
   }
 
-  &__list {
+  &__icons {
     display: flex;
     align-items: center;
     margin-left: auto;
@@ -154,7 +155,7 @@
     }
   }
 
-  &__item {
+  &__icon {
     cursor: pointer;
 
     &:not(:last-child) {
@@ -166,6 +167,70 @@
     svg {
       width: 20px;
       height: 20px;
+    }
+  }
+
+  &__search {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    z-index: 5;
+    display: none;
+    border-radius: 5px;
+    background-color: var(--color-white);
+  }
+
+  &__input {
+    position: relative;
+    margin: 0 0 var(--smallest-offset) 0;
+    outline: none;
+    border: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 15px 50px 15px 15px;
+    width: 253px;
+    height: 40px;
+    background-image: url("../../img/search.svg");
+    background-position: right 15px center;
+    background-repeat: no-repeat;
+    background-color: var(--color-alabaster);
+  }
+
+  &__wrapper {
+    padding: 0 20px;
+  }
+
+  &__text {
+    font: var(--font-solomon-regular);
+    font-size: 12px;
+    color: var(--color-dusty-gray);
+  }
+
+  &__category {
+    margin: var(--smallest-offset) 0;
+    font: var(--font-solomon-regular);
+    font-size: 14px;
+    color: var(--color-black);
+  }
+
+  &-item {
+    margin: var(--smallest-offset) 0;
+
+    a {
+      display: flex;
+      align-items: center;
+    }
+
+    &__img {
+      width: 30px;
+      height: 40px;
+    }
+
+    &__name {
+      margin: 0 0 0 var(--smallest-offset);
+      font: var(--font-solomon-regular);
+      font-size: 14px;
+      color: var(--color-black);
     }
   }
 }

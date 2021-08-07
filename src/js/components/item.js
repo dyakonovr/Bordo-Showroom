@@ -1,17 +1,18 @@
 let storageData;
 let code, title;
-if (localStorage.getItem('current_item')) {
-  storageData = JSON.parse(localStorage.getItem('current_item'));
+let sizes;
+if (localStorage.getItem('item')) {
+  storageData = JSON.parse(localStorage.getItem('item'));
   code = storageData.code;
   title = storageData.title;
 }
 else {
-  storageData = false;
+  storageData = [];
 }
 
 let itemSection = document.querySelector('.item__upper');
 
-if (itemSection && storageData) {
+if (itemSection) {
   itemSection.innerHTML = '';
   const loadItem = (code, title) => {
     fetch("../data/data.json")
@@ -24,6 +25,7 @@ if (itemSection && storageData) {
             let currTitle = el.title;
             el.products.forEach(el => {
               if (el.chars.Артикул == code) {
+                sizes = el.sizes;
                 console.log(el);
                 itemSection.innerHTML += `
                   <a href="category.html" class="item__category">&larr; <span class="category">${currTitle}</span></a>
@@ -62,7 +64,7 @@ if (itemSection && storageData) {
                     </select>
                     <p class="item__text">Подберите свой точный размер</p>
                     <div class="item__btns">
-                      <button class="item__btn item__btn--buy to-cart-btn">В корзину</button>
+                      <button class="item__btn item__btn--buy add-to-cart-btn">В корзину</button>
                       <button class="item__btn item__btn--like add-to-favorite-btn"></button>
                     </div>
                     <a class="item__share" href="https://vk.com/share.php?url=http://youtube.com" target="_blank">Поделиться Вконтакте</a>
@@ -93,7 +95,7 @@ if (itemSection && storageData) {
       .then((data) => {
         colorPicker(data);
         addToFavorite();
-        addToCartItem();
+        addToCart();
       })
   }
 
@@ -145,23 +147,27 @@ if (itemSection && storageData) {
     });
   }
 
-  const addToCartItem = () => {
-    const addBtn = document.querySelector('.to-cart-btn');
+  const addToCart = () => {
+    const addBtn = document.querySelector('.add-to-cart-btn');
+    const category = document.querySelector('.category').textContent;
     const select = document.querySelector('.select');
+    const parent = document.querySelector('.item__right');
+    const img = document.querySelector(`.main-image`);
     addBtn.addEventListener('click', function () {
       if (select.selectedIndex != 0) {
         addBtn.classList.add('btn--disabled');
         addBtn.textContent = 'Добавлено';
-        let arr = localStorage.getItem('favorite') ? JSON.parse(localStorage.getItem('favorite')) : [];
-        console.log({
+        let arr = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+        let obj = {
           category,
-          img: img.getAttribute('src'),
+          size: select.selectedOptions[0].textContent,
           title: parent.querySelector('.item__name').textContent,
           art: parent.querySelector('.art').textContent,
           code: parent.querySelector('.code').textContent,
-          price: parent.querySelector('.price').textContent,
-        });
-        // localStorage.setItem('favorite', JSON.stringify(arr));
+        };
+        console.log(obj);
+        arr.push(obj);
+        localStorage.setItem('cart', JSON.stringify(arr));
       } else {
         alert("Выберите подходящий размер");
       }
