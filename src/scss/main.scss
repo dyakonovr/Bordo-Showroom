@@ -13,6 +13,8 @@
 @import "./components/cart";
 @import "./components/favorite";
 @import "./components/reg";
+@import "./components/popup";
+@import "./components/profile";
 @import "./components/footer";
 
 .burger {
@@ -30,7 +32,7 @@
 }
 
 .subtitle {
-  font: var(--font-solomon-semibold);
+  font: var(--font-alumna);
   font-size: 30px;
 }
 

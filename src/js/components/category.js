@@ -1,6 +1,6 @@
 let storage, title;
-if (localStorage.getItem('current_category')) {
-  storage = JSON.parse(localStorage.getItem('current_category'))
+if (localStorage.getItem('category')) {
+  storage = JSON.parse(localStorage.getItem('category'))
   title = storage.title;
 }
   

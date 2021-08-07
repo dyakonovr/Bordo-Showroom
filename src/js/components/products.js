@@ -57,15 +57,6 @@ const productRender = (quanL) => {
                     </g>
                   </svg>
                 </a>
-                <button type="button" class="type__btn type__btn--buy add-to-cart-btn">
-                  <svg data-role="buy" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <g>
-                      <path
-                        d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" />
-                    </g>
-                  </svg>
-                </button>
               </div>
             </div>
             <strong class="type__subtitle">${el.title}</strong>
@@ -76,7 +67,6 @@ const productRender = (quanL) => {
               <span class="type__color" style="background-color: ${Object.values(el.colors)[2]}"></span>
             </div>
           </li>`;
-
           }
         }
       }
@@ -96,70 +86,18 @@ const productRender = (quanL) => {
             let parent = e.target.parentElement.closest('.type__element');
             let text = parent.querySelector('.type__title').textContent;
             console.log(text);
-            localStorage.setItem('current_item', JSON.stringify({ code: item.getAttribute('data-code'), title: text }))
+            localStorage.setItem('item', JSON.stringify({ code: item.getAttribute('data-code'), title: text }))
           }
 
           else if (e.target.parentElement.tagName == 'SPAN') {
             let parent = e.target.parentElement.closest('.type__element');
             let text = parent.querySelector('.type__title').textContent;
-            localStorage.setItem('current_category', JSON.stringify({ title: text }))
+            localStorage.setItem('category', JSON.stringify({ title: text }))
           }
         });
       });
       return data;
     })
-    .then((data) => {
-      addToCart(data);
-    })
-
-
-  const addToCart = function (data) {
-    let btnsBuy = document.querySelectorAll('.add-to-cart-btn');
-    btnsBuy.forEach((btnBuy) => {
-      btnBuy.addEventListener('click', function (e) {
-        let item = this.parentElement.closest('.type__item');
-        let parent = this.parentElement.closest('.type__element');
-        let title = parent.querySelector('.type__title').textContent;
-        let code = item.dataset.code;
-        data.forEach((el) => {
-          if (el.title == title) {
-            el.products.forEach((prod) => {
-              if (prod.chars.Артикул == code) {
-                let cartObj = {
-                  title: prod.title,
-                  price: prod.price,
-                  mainImage: prod.mainImage,
-                  sizes: prod.sizes,
-                  code: prod.chars.Артикул,
-                  quantity: 1
-                };
-                let arr = localStorage.getItem('current_cart') ? JSON.parse(localStorage.getItem('current_cart')) : [];
-                if (arr.length == 0) {
-                  console.log('empty');
-                  arr.push(cartObj);
-                } else {
-                  console.log('not empty');
-                  arr.forEach((el) => {
-                    console.log('foreach', el);
-                    if (el.code == prod.chars.Артикул) {
-                      el.quantity += 1;
-                      console.log("+1", el);
-                    }
-                    else {
-                      console.log('push');
-                      arr.push(cartObj);
-                    }
-                  });
-                  console.log(arr);
-                }
-                localStorage.setItem('current_cart', JSON.stringify(arr));
-              }
-            });
-          }
-        });
-      });
-    });
-  }
 }
 
 if (lists) {

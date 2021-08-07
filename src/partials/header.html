@@ -27,15 +27,15 @@
         <li class="nav__item"><a href="catalog.html" class="nav__link">Одежда и&nbsp;обувь</a></li>
         <li class="nav__item"><a href="#" class="nav__link">Магазины</a></li>
         <li class="nav__item"><a href="#" class="nav__link">Покупателям</a></li>
-        <li class="nav__item mobile-item"><a href="#" class="nav__link">Аккаунт</a></li>
-        <li class="nav__item mobile-item"><a href="#" class="nav__link">Поиск</a></li>
+        <li class="nav__item mobile-item"><a href="reg.html" class="nav__link">Аккаунт</a></li>
+        <li class="nav__item mobile-item search-js"><a href="#" class="nav__link">Поиск</a></li>
         <li class="nav__item mobile-item"><a href="favorite.html" class="nav__link">Избранное</a></li>
         <li class="nav__item mobile-item"><a href="cart.html" class="nav__link">Корзина</a></li>
       </ul>
     </nav>
     <a href="index.html" class="header__logo"><img src="../img/logo.svg" alt="Bordo Showroom Logo"></a>
-    <ul class="header__list">
-      <li class="header__item" title="Войти в аккаунт">
+    <ul class="header__icons">
+      <li class="header__icon" title="Войти в аккаунт">
         <a href="reg.html" class="header__link">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -47,7 +47,7 @@
           </svg>
         </a>
       </li>
-      <li class="header__item" title="Поиск">
+      <li class="header__icon search-js" title="Поиск">
         <a href="#" class="header__link">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -56,7 +56,7 @@
           </svg>
         </a>
       </li>
-      <li class="header__item" title="Любимые товары">
+      <li class="header__icon" title="Любимые товары">
         <a href="favorite.html" class="header__link">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -65,7 +65,7 @@
           </svg>
         </a>
       </li>
-      <li class="header__item" title="Корзина товаров">
+      <li class="header__icon" title="Корзина товаров">
         <a href="cart.html"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -74,5 +74,22 @@
           </svg></a>
       </li>
     </ul>
+    <div class="header__search search-block-js">
+      <input type="text" class="header__input header-input-js">
+      <div class="header__wrapper">
+        <span class="header__text">Актуально сейчас</span>
+        <p class="header__category">Джемперы и свитшоты</p>
+        <p class="header__category">Аксессуары</p>
+        <p class="header__category">Юбки и платья</p>
+        <p class="header__category">Брюки и шорты</p>
+        <span class="header__text">Популярное</span>
+        <ul class="header__list">
+          <li class="header-item">
+            <a href="#"><img src="../img/card-big.png" alt="Футболка удлиненная" class="header-item__img">
+              <span class="header-item__name">Футболка удлиненная</sp></a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </header>
