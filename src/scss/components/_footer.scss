@@ -56,6 +56,7 @@
     &__content {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      margin: var(--smallest-offset) 0 0 0;
     }
 
     &__link {
@@ -76,6 +77,11 @@
     font: var(--font-solomon-regular);
     font-size: 14px;
     color: var(--color-dusty-gray);
+  }
+
+  &__right {
+    display: inline-flex;
+    flex-direction: column;
   }
 
   &__mail {

@@ -1,14 +1,10 @@
-const popupCont = document.querySelector('.popup__container');
-const popup = document.querySelector('.popup');
-const openPopup = document.querySelector('.open-popup-btn');
+const popupAction = function (parentClass) {
+  const popup = document.querySelector(parentClass);
+  const popupClose = popup.querySelector('.popup__close');
 
-if (popupCont && openPopup) {
-  openPopup.addEventListener('click', function () {
-    toggleVisibility(popup);
-    disableScroll();
-  });
-
-  const popupClose = document.querySelector('.popup__close');
+  toggleVisibility(popup);
+  disableScroll();
+  
   popupClose.addEventListener('click', function () {
     toggleVisibility(popup);
     enableScroll();

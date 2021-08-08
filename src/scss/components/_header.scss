@@ -164,9 +164,27 @@
   }
 
   &__link {
-    svg {
-      width: 20px;
-      height: 20px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &--acc {
+      background-image: url("../../img/acc.svg");
+    }
+
+    &--search {
+      background-image: url("../../img/search.svg");
+    }
+
+    &--favorite {
+      background-image: url("../../img/heart.svg");
+    }
+
+    &--cart {
+      background-image: url("../../img/cart.svg");
     }
   }
 
@@ -197,7 +215,9 @@
   }
 
   &__wrapper {
+    overflow: auto;
     padding: 0 20px;
+    max-height: 205px;
   }
 
   &__text {
@@ -211,6 +231,10 @@
     font: var(--font-solomon-regular);
     font-size: 14px;
     color: var(--color-black);
+  }
+
+  &__list {
+    margin: 5px 0 0;
   }
 
   &-item {
@@ -231,6 +255,10 @@
       font: var(--font-solomon-regular);
       font-size: 14px;
       color: var(--color-black);
+    }
+
+    &:not(:last-child) {
+      margin: 0 0 var(--small-offset) 0;
     }
   }
 }

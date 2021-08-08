@@ -1,29 +1,24 @@
 const searchIcon = document.querySelector('.search-js');
+const searchIconMob = document.querySelector('.search-mob-js');
 const searchBlock = document.querySelector('.search-block-js');
 const iconsList = document.querySelector('.header__icons');
 const input = document.querySelector('.header-input-js');
 
 if (searchIcon && searchBlock) {
-  iconsList.addEventListener('click', function (e) {
-    console.log(e.target);
-    if (e.target.contains('.search-js')) toggleVisibility(searchBlock);
+  searchIcon.addEventListener('click', function (e) {
+    toggleVisibility(searchBlock);
   });
 
-  // document.addEventListener('click', function (event) {
-  //   if (searchBlock.contains(event.target) && !iconsList.contains(event.target)) return;
-  //   else if (!searchBlock.contains(event.target) && !iconsList.contains(event.target)) {
-  //     toggleVisibility(searchBlock);
-  //     input.value = '';
-  //   }
-  // });
+  document.addEventListener('click', function (e) {
+    const target = e.target;
+    const its_icon = target.classList.contains('search-js');
+    const its_block = target == searchBlock || searchBlock.contains(target);
+    const block_active = searchBlock.style.display == 'block';
 
-  // console.log('2');
-  // function handleClick(event) {
-  //   console.log('4');
-  //   if (searchBlock.contains(event.target)) return;
-  //   else if (!searchBlock.contains(event.target) && searchBlock.style.display == 'block') console.log('close');
-  // }
-  // console.log('3');
-  // document.addEventListener('click', handleClick);
+    if (!its_block && block_active && !its_icon) {
+      toggleVisibility(searchBlock);
+      input.value = '';
+    }
+  });
 }
 
