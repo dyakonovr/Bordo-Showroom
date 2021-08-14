@@ -22,15 +22,18 @@
         <div class="reg-container container">
           <h1 class="reg__title subtitle">Восстановление пароля</h1>
           <p class="reg__text">Введите ваш телефон или электронную почту, чтобы мы выслали Вам временный пароль</p>
-          <form class="reg__form form-recovery">
+          <form class="reg__form form-recovery" action="mail.php" enctype="multipart/form-data" method="POST">
+            <input type="hidden" name="project_name" value="Test">
+            <input type="hidden" name="admin_email" value="form-data@inbox.ru">
+            <input type="hidden" name="form_subject" value="Тема">
             <div class="reg__wrapper">
               <label for="number" class="reg__label">Контактный телефон</label>
-              <input type="text" name="number" id="number" class="reg__input"
+              <input type="text" name="number" id="number" class="reg__input custom-input"
                 data-validate-field="number">
             </div>
             <div class="reg__wrapper">
               <label for="mail" class="reg__label">Электронная почта</label>
-              <input type="email" name="mail" id="mail" class="reg__input" data-validate-field="email">
+              <input type="email" name="mail" id="mail" class="reg__input custom-input" data-validate-field="email">
             </div>
             <input type="submit" value="Отправить" class="reg__btn btn--primary">
           </form>

@@ -1,14 +1,5 @@
 const cartSection = document.querySelector('.cart__list');
 
-const emptyCheck = (storage) => {
-  if (storage.length == 0) {
-    cartSection.innerHTML += `<li class="empty">Тут пусто..</li>`;
-    let btn = document.querySelector('.cart__btn');
-    btn.classList.add('btn--disabled');
-    btn.setAttribute('disabled', 'disabled');
-  }
-};
-
 const cartRender = (arr) => {
   fetch("../data/data.json")
     .then((response) => {
@@ -64,7 +55,7 @@ const cartRender = (arr) => {
     let minusBtns = document.querySelectorAll('.btn-minus');
 
     plusBtns.forEach((btn) => {
-      btn.addEventListener('click', function (e) {
+      btn.addEventListener('click', function () {
         let input = btn.parentElement.querySelector('.input-number');
         let quantity = input.getAttribute('value');
         (quantity >= 1) ? input.setAttribute('value', ++quantity) : input.setAttribute('value', quantity);
@@ -72,7 +63,7 @@ const cartRender = (arr) => {
     });
 
     minusBtns.forEach((btn) => {
-      btn.addEventListener('click', function (e) {
+      btn.addEventListener('click', function () {
         let input = btn.parentElement.querySelector('.input-number');
         let quantity = input.getAttribute('value');
         (quantity >= 2) ? input.setAttribute('value', --quantity) : input.setAttribute('value', quantity);
@@ -85,7 +76,7 @@ const cartRender = (arr) => {
     deleteBtns.forEach((btn) => {
       btn.addEventListener('click', function () {
         let parent = btn.parentElement;
-        let code = parent.dataset.index;
+        let code = parent.dataset.code;
         parent.remove();
         itemsArr.forEach((el) => {
           if (el.code == code) {
@@ -95,7 +86,11 @@ const cartRender = (arr) => {
             localStorage.setItem('cart', JSON.stringify(itemsArr));
           }
         });
-        emptyCheck(itemsArr);
+        if (emptyCheck(itemsArr, cartSection)) {
+          let btn = document.querySelector('.cart__btn');
+          btn.classList.add('btn--disabled');
+          btn.setAttribute('disabled', 'disabled');
+        }
       });
     });
   }
@@ -118,7 +113,11 @@ const cartLogic = function () {
   (localStorage.getItem('cart')) ? itemsArr = JSON.parse(localStorage.getItem('cart')) : itemsArr = [];
 
   cartSection.innerHTML = '';
-  emptyCheck(itemsArr);
+  if (emptyCheck(itemsArr, cartSection)) {
+    let btn = document.querySelector('.cart__btn');
+    btn.classList.add('btn--disabled');
+    btn.setAttribute('disabled', 'disabled');
+  }
   cartRender(itemsArr);
 }
 

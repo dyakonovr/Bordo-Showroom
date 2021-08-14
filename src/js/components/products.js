@@ -17,7 +17,7 @@ const productRender = (quanL) => {
           lists.innerHTML += `
           <div class="type__element" data-el-id="${i}">
             <div class="type__upper">
-              <span class="type__title">${curr.title}</span>
+              <span class="type__title" aria-label="Категория товаров">${curr.title}</span>
               <span class="type__all"><a href="category.html">Все товары&nbsp;&rsaquo;</a></span>
             </div>
             <div class="type__lower">
@@ -32,39 +32,17 @@ const productRender = (quanL) => {
             list.innerHTML += `
             <li class="type__item" data-code="${el.chars.Артикул}">
             <div class="type__picture">
-              <img src="${el.mainImage}" alt="${el.title}" class="type__img">
+              <img src="${el.mainImage}" alt="${el.title}" class="type__img" aria-label="Фото товара">
               <div class="type__btns">
-                <a href="item.html" class="type__btn type__btn--watch">
-                  <?xml version="1.0" encoding="iso-8859-1"?>
-                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 511.992 511.992"
-                    style="enable-background: new 0 0 511.992 511.992;" xml:space="preserve">
-                    <g>
-                      <g>
-                        <path d="M510.096,249.937c-4.032-5.867-100.928-143.275-254.101-143.275C124.56,106.662,7.44,243.281,2.512,249.105
-                  			c-3.349,3.968-3.349,9.792,0,13.781C7.44,268.71,124.56,405.329,255.995,405.329S504.549,268.71,509.477,262.886
-                  			C512.571,259.217,512.848,253.905,510.096,249.937z M255.995,383.996c-105.365,0-205.547-100.48-230.997-128
-                  			c25.408-27.541,125.483-128,230.997-128c123.285,0,210.304,100.331,231.552,127.424
-                  			C463.013,282.065,362.256,383.996,255.995,383.996z" />
-                      </g>
-                    </g>
-                    <g>
-                      <g>
-                        <path d="M255.995,170.662c-47.061,0-85.333,38.272-85.333,85.333s38.272,85.333,85.333,85.333s85.333-38.272,85.333-85.333
-                  			S303.056,170.662,255.995,170.662z M255.995,319.996c-35.285,0-64-28.715-64-64s28.715-64,64-64s64,28.715,64,64
-                  			S291.28,319.996,255.995,319.996z" />
-                      </g>
-                    </g>
-                  </svg>
-                </a>
+                <a href="item.html" class="type__btn type__btn--watch"></a>
               </div>
             </div>
             <strong class="type__subtitle">${el.title}</strong>
             <span class="type__price">${el.price} &#8381;</span>
             <div class="type__colors">
-              <span class="type__color" style="background-color: ${Object.values(el.colors)[0]}"></span>
-              <span class="type__color" style="background-color: ${Object.values(el.colors)[1]}"></span>
-              <span class="type__color" style="background-color: ${Object.values(el.colors)[2]}"></span>
+              <span class="type__color" style="background-color: ${Object.values(el.colors)[0]}" aria-label="Один из цветов товара ${Object.keys(el.colors)[0]}"></span>
+              <span class="type__color" style="background-color: ${Object.values(el.colors)[1]}" aria-label="Один из цветов товара ${Object.keys(el.colors)[1]}"></span>
+              <span class="type__color" style="background-color: ${Object.values(el.colors)[2]}" aria-label="Один из цветов товара ${Object.keys(el.colors)[2]}"></span>
             </div>
           </li>`;
           }

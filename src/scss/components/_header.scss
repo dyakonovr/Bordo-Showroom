@@ -161,6 +161,16 @@
     &:not(:last-child) {
       margin-right: var(--big-offset);
     }
+
+    &--search {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url("../../img/search.svg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
   }
 
   &__link {
@@ -173,10 +183,6 @@
 
     &--acc {
       background-image: url("../../img/acc.svg");
-    }
-
-    &--search {
-      background-image: url("../../img/search.svg");
     }
 
     &--favorite {
@@ -196,6 +202,17 @@
     display: none;
     border-radius: 5px;
     background-color: var(--color-white);
+
+    @include small-screen {
+      position: fixed;
+      left: 0;
+      right: auto;
+      top: 0;
+      z-index: 15;
+      padding: var(--small-offset);
+      width: 100vw;
+      height: 100vh;
+    }
   }
 
   &__input {
@@ -212,25 +229,53 @@
     background-position: right 15px center;
     background-repeat: no-repeat;
     background-color: var(--color-alabaster);
+
+    @include small-screen {
+      margin: 4px 0 var(--small-offset) 35px;
+      border-radius: 5px;
+      width: 90%;
+    }
   }
 
   &__wrapper {
     overflow: auto;
     padding: 0 20px;
     max-height: 205px;
+
+    @include small-screen {
+      padding: 0;
+      max-height: none;
+    }
   }
 
   &__text {
     font: var(--font-solomon-regular);
     font-size: 12px;
     color: var(--color-dusty-gray);
+
+    @include small-screen {
+      font-size: 16px;
+    }
+  }
+
+  .search-title {
+    font: var(--font-solomon-regular);
+    font-size: 14px;
+    color: var(--color-black);
+
+    @include small-screen {
+      font-size: 20px;
+    }
   }
 
   &__category {
     margin: var(--smallest-offset) 0;
-    font: var(--font-solomon-regular);
-    font-size: 14px;
-    color: var(--color-black);
+
+    @include small-screen {
+      &:last-of-type {
+        margin: 0 0 var(--small-offset) 0;
+      }
+    }
   }
 
   &__list {
@@ -258,7 +303,7 @@
     }
 
     &:not(:last-child) {
-      margin: 0 0 var(--small-offset) 0;
+      margin: 0 0 var(--smallest-offset) 0;
     }
   }
 }

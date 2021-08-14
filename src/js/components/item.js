@@ -27,21 +27,33 @@ if (itemSection) {
               if (el.chars.Артикул == code) {
                 sizes = el.sizes;
                 console.log(el);
+
+                const preview = el.gallery.map((image, idx) => {
+                  return `
+                <li class="item__prev" data-image-index="${idx}">
+                  <img src="${image}" alt="${el.title} фото ${idx}">
+                </li>
+              `;
+                });
+
+                const sliderImgs = el.gallery.map((image, idx) => {
+                  return `
+                <div class="swiper-slide">
+                  <img src="${image}" alt="${el.title} фото ${idx}">
+                </div>
+              `;
+                });
+
                 itemSection.innerHTML += `
-                  <a href="category.html" class="item__category">&larr; <span class="category">${currTitle}</span></a>
+                  <a href="category.html" class="item__category">&larr;&nbsp;<span class="category">${currTitle}</span></a>
                   <ul class="item__preview">
-                    <li class="item__prev" data-image-index="0"><img src="${el.gallery[0]}" class="main-image" alt="${el.title} фото 1"></li>
-                    <li class="item__prev" data-image-index="1"><img src="${el.gallery[1]}" alt="${el.title} фото 2"></li>
-                    <li class="item__prev" data-image-index="2"><img src="${el.gallery[2]}" alt="${el.title} фото 3"></li>
-                    <li class="item__prev" data-image-index="3"><img src="${el.gallery[3]}" alt="${el.title} фото 4"></li>
+                    ${preview.join('')}
                   </ul>
                   <div class="item-swiper">
                     <div class="item-swiper__container">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="${el.gallery[0]}" alt="${el.title} фото 1"></div>
-                        <div class="swiper-slide"><img src="${el.gallery[1]}" alt="${el.title} фото 2"></div>
-                        <div class="swiper-slide"><img src="${el.gallery[2]}" alt="${el.title} фото 3"></div>
-                        <div class="swiper-slide"><img src="${el.gallery[3]}" alt="${el.title} фото 4"></div>
+                        ${sliderImgs.join('')}
+                        <div class="swiper-pagination"></div>
                       </div>
                     </div>
                   </div>
@@ -82,7 +94,9 @@ if (itemSection) {
             })
           }
         });
-        const itemSwiper = new Swiper('.item-swiper__container', { slidesPerView: 'auto', spaceBetween: 20 });
+        const itemSwiper = new Swiper('.item-swiper__container', {
+          slidesPerView: 'auto', spaceBetween: 20,
+        });
         let previewBlock = document.querySelector('.item__preview');
         previewBlock.addEventListener('click', function (e) {
           if (e.target.tagName == 'IMG') {
@@ -96,6 +110,7 @@ if (itemSection) {
         colorPicker(data);
         addToFavorite();
         addToCart();
+        goToCategory();
       })
   }
 
@@ -131,17 +146,14 @@ if (itemSection) {
     const category = document.querySelector('.category').textContent;
     const favBtn = document.querySelector('.add-to-favorite-btn');
     const parent = document.querySelector('.item__right');
-    const img = document.querySelector(`.main-image`);
     favBtn.addEventListener('click', function () {
       favBtn.classList.add('btn--disabled');
       let arr = localStorage.getItem('favorite') ? JSON.parse(localStorage.getItem('favorite')) : [];
       arr.push({
         category,
-        mainImage: img.getAttribute('src'),
         title: parent.querySelector('.item__name').textContent,
         art: parent.querySelector('.art').textContent,
         code: parent.querySelector('.code').textContent,
-        price: parent.querySelector('.price').textContent,
       });
       localStorage.setItem('favorite', JSON.stringify(arr));
     });
@@ -152,7 +164,6 @@ if (itemSection) {
     const category = document.querySelector('.category').textContent;
     const select = document.querySelector('.select');
     const parent = document.querySelector('.item__right');
-    const img = document.querySelector(`.main-image`);
     addBtn.addEventListener('click', function () {
       if (select.selectedIndex != 0) {
         addBtn.classList.add('btn--disabled');
@@ -171,6 +182,14 @@ if (itemSection) {
       } else {
         alert("Выберите подходящий размер");
       }
+    });
+  }
+
+  const goToCategory = function () {
+    const category = document.querySelector('.category');
+    category.addEventListener('click', function (e) {
+      const title = e.target.textContent;
+      localStorage.setItem('category', JSON.stringify({ title }));
     });
   }
 

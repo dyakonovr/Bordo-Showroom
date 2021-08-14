@@ -1,3 +1,5 @@
+@import "../mixins";
+
 .item {
   &__container {
     display: flex;
@@ -6,6 +8,19 @@
 
   &__upper {
     display: flex;
+
+    @include xlarge-screen {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    @include large-screen {
+      justify-content: space-around;
+    }
+
+    @include medium-screen {
+      justify-content: space-between;
+    }
   }
 
   &__category {
@@ -14,10 +29,25 @@
     font: var(--font-solomon-regular);
     line-height: 24px;
     color: var(--color-black);
+
+    @include xlarge-screen {
+      display: block;
+      margin: 0 0 var(--small-offset) 0;
+      width: 100%;
+      max-width: none;
+    }
   }
 
   &__preview {
     margin: 0 0 0 var(--big-offset);
+
+    @include xlarge-screen {
+      margin-left: 0;
+    }
+
+    @include large-screen {
+      display: none;
+    }
   }
 
   &__prev {
@@ -38,12 +68,30 @@
     overflow: hidden;
     margin: 0 0 0 var(--small-offset);
     max-width: 540px;
+
+    @include xlarge-screen {
+      margin: 0 0 0 var(--smallest-offset);
+    }
+
+    @include large-screen {
+      max-width: 420px;
+    }
+
+    @include medium-screen {
+      margin: 0 0 var(--medium-offset) 0;
+      max-width: 300px;
+    }
   }
 
   .swiper-slide {
     img {
       width: 540px;
       height: 707px;
+
+      @include xlarge-screen {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 
@@ -51,6 +99,10 @@
     display: flex;
     flex-direction: column;
     margin: 0 0 0 var(--small-offset);
+
+    @include xlarge-screen {
+      margin: 0 0 0 var(--smallest-offset);
+    }
   }
 
   &__name {
@@ -173,5 +225,11 @@
   &__property {
     font: var(--font-solomon-light);
     font-size: 14px;
+  }
+
+  .lists__container {
+    @include small-screen {
+      padding: 0;
+    }
   }
 }

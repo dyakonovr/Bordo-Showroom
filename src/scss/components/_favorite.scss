@@ -11,8 +11,8 @@
 
   &__list {
     display: grid;
-    grid-gap: 20px;
     grid-template-columns: repeat(4, 1fr);
+    gap: var(--small-offset);
 
     @include large-screen {
       grid-template-columns: repeat(3, 1fr);

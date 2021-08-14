@@ -2,24 +2,24 @@ const recForm = document.querySelector('.form-recovery');
 const regForm = document.querySelector('.form-reg');
 const authForm = document.querySelector('.form-auth');
 
-let validateForm = function (selector, rules, successModal) {
+let validateForm = function (selector, rules, messages, successModal) {
   new window.JustValidate(selector, {
     rules,
+    messages,
     submitHandler: function (form) {
-      console.log('submit');
-      // let formData = new FormData(form);
-      // let xhr = new XMLHttpRequest();
-      // xhr.onreadystatechange = function () {
-      //   if (xhr.readyStage === 4) {
-      //     if (xhr.status === 200) {
-      //       console.log('Отправлено');
-      //       popupAction(successModal);
-      //     }
-      //   }
-      // };
-      // xhr.open('POST', 'mail.php', true);
-      // xhr.send(formData);
-      // form.reset();
+      let formData = new FormData(form);
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            console.log('Отправлено');
+            popupAction(successModal);
+          }
+        }
+      };
+      xhr.open('POST', '../mail.php', true);
+      xhr.send(formData);
+      form.reset();
     }
   })
 
@@ -30,7 +30,7 @@ if (recForm) {
     email: {
       required: true,
       email: true
-    }
+    },
   }, '.recovery-popup');
 }
 
@@ -53,7 +53,27 @@ else if (regForm) {
       minLength: 4,
       maxLength: 15
     }
-  }, '.reg-popup');
+  },
+    {
+      login: {
+        required: 'Введите логин!',
+        minLength: 'Минимальная длина логина: 3 символа',
+        maxLength: 'Максимальная длина логина: 15 символов',
+      },
+      pass: {
+        required: 'Введите пароль!',
+        password: 'Пароль не валиден!',
+        minLength: 'Минимальная длина пароля: 4 символа',
+        maxLength: 'Максимальная длина пароля: 15 символов',
+      },
+      repeat_pass: {
+        required: 'Подтвердите пароль!',
+        password: 'Пароль не валиден!',
+        minLength: 'Минимальная длина пароля: 4 символа',
+        maxLength: 'Максимальная длина пароля: 15 символов',
+      },
+    },
+    '.reg-popup');
 }
 
 else if (authForm) {
@@ -69,5 +89,18 @@ else if (authForm) {
       minLength: 4,
       maxLength: 15
     }
-  });
+  },
+    {
+      login: {
+        required: 'Введите логин!',
+        minLength: 'Минимальная длина логина: 3 символа',
+        maxLength: 'Максимальная длина логина: 15 символов',
+      },
+      pass: {
+        required: 'Введите пароль!',
+        password: 'Пароль не валиден!',
+        minLength: 'Минимальная длина пароля: 4 символа',
+        maxLength: 'Максимальная длина пароля: 15 символов',
+      },
+    });
 }

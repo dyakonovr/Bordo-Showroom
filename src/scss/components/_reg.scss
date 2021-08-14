@@ -10,6 +10,7 @@
   }
 
   &__wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
 
@@ -25,12 +26,7 @@
   }
 
   &__input {
-    border: none;
-    border-radius: 5px;
-    padding: var(--smallest-offset);
     width: 314px;
-    height: 40px;
-    background-color: var(--color-alabaster);
 
     @include small-screen {
       width: 100%;

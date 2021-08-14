@@ -1,44 +1,37 @@
-.roster {
-  margin: 90px 0 0;
+@import "../mixins";
 
-  &__container {
-    display: flex;
+.roster {
+  &__top {
+    margin: var(--big-offset) 0;
   }
 
   &__title {
-    margin: 0 0 var(--big-offset) 0;
+    margin: 0 0 var(--small-offset) 0;
   }
 
-  &__left {
-    margin: 0 var(--medium-offset) 0 0;
-    min-width: 200px;
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--smallest-offset);
+
+    @include large-screen {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include medium-screen {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__item {
     font: var(--font-solomon-regular);
 
     &:not(:last-child) {
-      margin: 0 0 var(--small-offset) 0;
+      margin: 0 var(--medium-offset) 0 0;
     }
   }
 
   &__link {
     color: var(--color-gray);
-  }
-
-  .discount__title {
-    font-size: 35px;
-  }
-
-  .type {
-    &__btn {
-      width: 60px;
-      height: 60px;
-
-      svg {
-        width: 30px;
-        height: 30px;
-      }
-    }
   }
 }

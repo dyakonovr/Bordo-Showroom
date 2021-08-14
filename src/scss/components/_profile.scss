@@ -1,3 +1,5 @@
+@import "../mixins";
+
 .profile {
   &__title {
     display: inline-block;
@@ -22,9 +24,17 @@
 
   &__list {
     display: grid;
-    grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
     margin: var(--medium-offset) 0 0 0;
+    gap: var(--small-offset);
+
+    @include large-screen {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include small-screen {
+      grid-template-columns: 1fr;
+    }
   }
 
   &-item {

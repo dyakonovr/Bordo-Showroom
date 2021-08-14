@@ -46,3 +46,24 @@ function getScrollbarWidth() {
   outer.parentNode.removeChild(outer);
   return scrollbarWidth;
 }
+
+const emptyCheck = (storage, section) => {
+  if (storage.length == 0) {
+    section.innerHTML += `<li class="empty">Тут пусто..</li>`;
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const showItem = () => {
+  const names = document.querySelectorAll('.name');
+  names.forEach((name) => {
+    name.addEventListener('click', function (e) {
+      let parent = e.target.parentElement.closest('.item');
+      let code = parent.dataset.code;
+      let title = parent.dataset.category;
+      localStorage.setItem('current_item', JSON.stringify({ code, title }));
+    });
+  });
+}

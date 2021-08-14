@@ -4,25 +4,43 @@ const favoriteRender = () => {
   let storage;
   (localStorage.getItem('favorite')) ? storage = JSON.parse(localStorage.getItem('favorite')) : storage = [];
   favoriteList.innerHTML = '';
-  storage.forEach((item) => {
-    console.log(item);
-    favoriteList.innerHTML += `
-            <li class="favorite__item item" data-code="${item.code}" data-category="${item.category}">
-              <img src="${item.img}" alt="${item.title}" class="favorite__img" />
+
+  fetch("../data/data.json")
+    .then((response) => {
+      return response.json()
+    })
+    .then((data) => {
+      data.forEach((el) => {
+        storage.forEach((fav) => {
+          if (el.title == fav.category) {
+            let category = el.title;
+            el.products.forEach((prod) => {
+              if (prod.title == fav.title) {
+                console.log(prod);
+                favoriteList.innerHTML += `
+            <li class="favorite__item item" data-code="${prod.chars.Артикул}" data-category="${category}">
+              <img src="${prod.mainImage}" alt="${prod.title}" class="favorite__img" />
               <div class="favorite__content">
-                <span class="favorite__art art-text">АРТ ${item.art}</span>
-                <a href="item.html" class="favorite__name name">${item.title}</a>
+                <span class="favorite__art art-text">АРТ 222</span>
+                <a href="item.html" class="favorite__name name">${prod.title}</a>
                 <div class="favorite__lower">
-                  <span class="favorite__price price">${item.price}&nbsp;&#8381;</span>
+                  <span class="favorite__price price">${prod.price}&nbsp;&#8381;</span>
                   <button class="favorite__delete btn--delete btn"></button>
                 </div>
               </div>
             </li>
-    `;
-  });
-  deleteItem(storage);
-  emptyCheck(storage);
-  showItem();
+                `;
+              }
+            })
+          }
+        })
+      });
+    })
+    .then((data) => {
+      deleteItem(storage);
+      emptyCheck(storage, favoriteList);
+      showItem();
+    })
 }
 
 const deleteItem = (storage) => {
@@ -39,23 +57,7 @@ const deleteItem = (storage) => {
       });
       storage = storage.filter(n => n);
       localStorage.setItem('favorite', JSON.stringify(storage));
-      emptyCheck(storage);
-    });
-  });
-}
-
-const emptyCheck = (storage) => {
-  if (storage.length == 0) favoriteList.innerHTML += `<li class="empty">Тут пусто..</li>`;
-};
-
-const showItem = () => {
-  const names = document.querySelectorAll('.name');
-  names.forEach((name) => {
-    name.addEventListener('click', function (e) {
-      let parent = e.target.parentElement.closest('.item');
-      let code = parent.dataset.code;
-      let title = parent.dataset.category;
-      localStorage.setItem('current_item', JSON.stringify({ code, title}));
+      emptyCheck(storage, favoriteList);
     });
   });
 }

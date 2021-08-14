@@ -15,6 +15,11 @@ body {
   background-color: #fff;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 a {
   text-decoration: none;
   color: #000;
@@ -30,13 +35,20 @@ ul {
   padding: 0;
 }
 
+main {
+  flex: 1 1 auto;
+}
+
 .is-outer {
   position: relative !important; // stylelint-disable-line declaration-no-important
   left: -9999px !important; // stylelint-disable-line declaration-no-important
 }
 
 .site-container {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  min-height: 100%;
 }
 
 .is-hidden {
