@@ -10,7 +10,7 @@ if ((searchIcon || searchIconMob) && searchBlock) {
   });
 
   searchIconMob.addEventListener('click', function (e) {
-    toggleVisibility(searchBlock);
+    searchBlock.classList.add('header__search--active');
   });
 
   document.addEventListener('click', function (e) {

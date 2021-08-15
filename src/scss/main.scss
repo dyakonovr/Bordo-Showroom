@@ -173,6 +173,10 @@
   background: #b81111;
 }
 
+.no-error-label .js-validate-error-label {
+  display: none;
+}
+
 .custom-input {
   border: none;
   border-radius: 5px;

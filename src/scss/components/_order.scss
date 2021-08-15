@@ -133,6 +133,7 @@
     width: 100%;
 
     @include large-screen {
+      display: block;
       max-width: 300px;
     }
   }

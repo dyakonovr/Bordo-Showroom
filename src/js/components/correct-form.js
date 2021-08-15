@@ -1,6 +1,7 @@
 const recForm = document.querySelector('.form-recovery');
 const regForm = document.querySelector('.form-reg');
 const authForm = document.querySelector('.form-auth');
+const mailingForm = document.querySelector('.mailing-form');
 
 let validateForm = function (selector, rules, messages, successModal) {
   new window.JustValidate(selector, {
@@ -13,7 +14,9 @@ let validateForm = function (selector, rules, messages, successModal) {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
             console.log('Отправлено');
-            popupAction(successModal);
+            if (successModal) {
+              popupAction(successModal);
+            } 
           }
         }
       };
@@ -76,31 +79,15 @@ else if (regForm) {
     '.reg-popup');
 }
 
-else if (authForm) {
-  validateForm('.form-auth', {
-    login: {
+else if (mailingForm) {
+  validateForm('.mailing-form', {
+    mail: {
       required: true,
       minLength: 3,
-      maxLength: 15
+      email: true,
     },
-    pass: {
-      required: true,
-      password: true,
-      minLength: 4,
-      maxLength: 15
-    }
   },
-    {
-      login: {
-        required: 'Введите логин!',
-        minLength: 'Минимальная длина логина: 3 символа',
-        maxLength: 'Максимальная длина логина: 15 символов',
-      },
-      pass: {
-        required: 'Введите пароль!',
-        password: 'Пароль не валиден!',
-        minLength: 'Минимальная длина пароля: 4 символа',
-        maxLength: 'Максимальная длина пароля: 15 символов',
-      },
-    });
+  '.mail-popup'
+  );
+  
 }

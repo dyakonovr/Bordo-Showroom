@@ -22,7 +22,7 @@ const cartRender = (arr) => {
                               <span class="cart-item__art art-text">АРТ 6789765432</span>
                               <a href="item.html" class="cart-item__name name-js">${prod.title}</a>
                             </div>
-                            <span class="cart-item__price price">${prod.price}&nbsp;&#8381;</span>
+                            <p class="cart-item__price"><span class="price" data-price="${prod.price}">${normalPrice(prod.price)}</span>&nbsp;&#8381;</p>
                             <select name="sizes" class="cart-item__select custom-select">
                               <option value="${prodSizes[0]}" class="cart-item__option custom-option">${prodSizes[0]}</option>
                               <option value="${prodSizes[1]}" class="cart-item__option custom-option">${prodSizes[1]}</option>
@@ -48,6 +48,7 @@ const cartRender = (arr) => {
       deleteItem(arr);
       quantityChange();
       goToItem();
+      goToOrder();
     })
 
   const quantityChange = function () {
@@ -104,6 +105,16 @@ const cartRender = (arr) => {
         const title = item.dataset.category;
         localStorage.setItem('item', JSON.stringify({ title, code }));
       });
+    });
+  }
+
+  const goToOrder = function () {
+    const btnToOrder = document.querySelector('.btn-order-js');
+    btnToOrder.addEventListener('click', function () {
+      const prices = document.querySelectorAll('.price');
+      let total = 0;
+      for (let price of prices) total += Number(price.dataset.price);
+      localStorage.setItem('total', JSON.stringify({ total}));
     });
   }
 }

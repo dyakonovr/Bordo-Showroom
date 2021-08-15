@@ -60,7 +60,7 @@ if (itemSection) {
                   <div class="item__right">
                     <span class="item__art art-text">АРТ <span class="art">6789765432</span></span>
                     <strong class="item__name name">${el.title}</strong>
-                    <span class="item__price"><span class="price">${el.price}</span> &#8381;</span>
+                    <span class="item__price"><span class="price">${normalPrice(el.price)}</span> &#8381;</span>
                     <div class="item__colors">
                       <button type="button" class="item__color item__color--active" data-color="${Object.values(el.colors)[0]}" style="background-color: ${Object.values(el.colors)[0]}"></button>
                       <button type="button" class="item__color" data-color="${Object.values(el.colors)[1]}" style="background-color: ${Object.values(el.colors)[1]}"></button>
@@ -191,7 +191,7 @@ if (itemSection) {
       const title = e.target.textContent;
       localStorage.setItem('category', JSON.stringify({ title }));
     });
-  }
+  };
 
   loadItem(code, title);
 }

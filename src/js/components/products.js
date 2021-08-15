@@ -38,7 +38,7 @@ const productRender = (quanL) => {
               </div>
             </div>
             <strong class="type__subtitle">${el.title}</strong>
-            <span class="type__price">${el.price} &#8381;</span>
+            <span class="type__price">${normalPrice(el.price)} &#8381;</span>
             <div class="type__colors">
               <span class="type__color" style="background-color: ${Object.values(el.colors)[0]}" aria-label="Один из цветов товара ${Object.keys(el.colors)[0]}"></span>
               <span class="type__color" style="background-color: ${Object.values(el.colors)[1]}" aria-label="Один из цветов товара ${Object.keys(el.colors)[1]}"></span>

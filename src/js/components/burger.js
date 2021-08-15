@@ -9,6 +9,9 @@ if (burger) {
       toggleVisibility(searchBlock);
       input.value = '';
     }
+    else if (searchBlock.matches('.header__search--active')){
+      searchBlock.classList.remove('header__search--active')
+    }
     else if (burger.matches('.burger--active')) {
       e.currentTarget.classList.remove('burger--active');
       nav.classList.remove('nav--active');
