@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#111111">
+  <title>Bordo</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div class="site-container">
+    @include('partials/universal/preloader.html')
+    @include('partials/universal/header.html')
+    <main>
+      <section class="reg">
+        <div class="reg-container container">
+          <h1 class="reg__title subtitle">Восстановление пароля</h1>
+          <p class="reg__text">Введите ваш телефон или электронную почту, чтобы мы выслали Вам временный пароль</p>
+          <form class="reg__form form-recovery" action="mail.php" enctype="multipart/form-data" method="POST">
+            <input type="hidden" name="project_name" value="Test">
+            <input type="hidden" name="admin_email" value="form-data@inbox.ru">
+            <input type="hidden" name="form_subject" value="Восстановление пароля">
+            <div class="reg__wrapper">
+              <label for="number" class="reg__label">Контактный телефон</label>
+              <input type="text" name="number" id="number" class="reg__input custom-input" data-validate-field="number">
+            </div>
+            <div class="reg__wrapper">
+              <label for="mail" class="reg__label">Электронная почта</label>
+              <input type="email" name="mail" id="mail" class="reg__input custom-input" data-validate-field="email">
+            </div>
+            <input type="submit" value="Отправить" class="reg__btn btn--primary">
+          </form>
+        </div>
+        @include('partials/universal/popup.html', {
+        "title": "Временный пароль выслан",
+        "class": "recovery-popup",
+        "text": "Пожалуйста, проверьте почту или СМС сообщения на телефоне",
+        "btn-text": "К авторизации",
+        "link": "auth.html"
+        })
+      </section>
+    </main>
+    @include('partials/universal/footer.html')
+  </div>
+  <script src="js/vendor.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

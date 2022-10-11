@@ -1,0 +1,144 @@
+.order {
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin: var(--big-offset) 0 0 0;
+  }
+
+  &__wrap {
+    display: flex;
+    margin: var(--big-offset) 0 0 0;
+
+    @include large-screen {
+      flex-direction: column;
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
+    font: var(--font-solomon-regular);
+    font-size: 18px;
+    color: var(--color-black);
+
+    &:not(:first-child) {
+      margin: var(--big-offset) 0 0 0;
+    }
+  }
+
+  &-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: var(--medium-offset) 0 0 0;
+    gap: var(--medium-offset) var(--big-offset);
+  }
+
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__left {
+    margin: 0 var(--small-offset) 0 0;
+  }
+
+  &__label {
+    font: var(--font-solomon-regular);
+    font-size: 14px;
+    color: var(--color-dusty-gray);
+  }
+
+  &__input {
+    width: 255px;
+  }
+
+  &__lower {
+    display: flex;
+    margin: var(--big-offset) 0 0 0;
+  }
+
+  &__checkboxes {
+    &:not(:last-child) {
+      margin: 0 var(--medium-offset) 0 0;
+    }
+  }
+
+  &__checkbox-group {
+    display: flex;
+    flex-direction: column;
+    margin: var(--medium-offset) 0 0 0;
+  }
+
+  &__checkbox {
+    &:not(:last-child) {
+      margin: 0 0 var(--smallest-offset) 0;
+
+      @include small-screen {
+        margin: 0 0 var(--small-offset) 0;
+      }
+    }
+  }
+
+  &__right {
+    padding: var(--medium-offset);
+    height: 100%;
+    max-width: 312px;
+    color: var(--color-white);
+    background-color: var(--color-black);
+
+    @include large-screen {
+      order: -1;
+      margin: 0 0 var(--medium-offset) 0;
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  &__group {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--smallest-offset);
+
+    &:not(:last-child) {
+      margin: 0 0 var(--medium-offset) 0;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font: var(--font-solomon-regular);
+    font-size: 18px;
+  }
+
+  &__remark {
+    font: var(--font-solomon-regular);
+    font-size: 14px;
+    color: var(--color-dusty-gray);
+  }
+
+  &__descr {
+    margin: var(--medium-offset) 0 var(--small-offset) 0;
+    font: var(--font-solomon-regular);
+    font-size: 12px;
+    color: var(--color-dusty-gray);
+  }
+
+  &__promo-input {
+    margin: var(--small-offset) 0 0 0;
+    width: 100%;
+
+    @include large-screen {
+      display: block;
+      max-width: 300px;
+    }
+  }
+
+  &__btn {
+    margin: var(--big-offset) 0 0 0;
+    border: none;
+    cursor: pointer;
+  }
+}

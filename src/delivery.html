@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#111111">
+  <title>Bordo</title>
+  <link rel="stylesheet" href="css/delivery.css">
+</head>
+
+<body>
+  <div class="site-container">
+    @include('partials/universal/preloader.html')
+    @include('partials/universal/header.html')
+    <main>
+      <section class="payment">
+        <div class="container custom-container">
+          <h1 class="payment__title subtitle">Оплата и доставка</h1>
+          <strong class="payment__subtitle">Курьерская доставка транспортной компанией</strong>
+          <p class="payment__descr">Доставка заказов осуществляется транспортными компаниями:</p>
+          <ul class="payment__list">
+            <li class="payment__item">СДЭК</li>
+            <li class="payment__item">ПЭК</li>
+            <li class="payment__item">ЕМС</li>
+            <li class="payment__item">Почта России</li>
+          </ul>
+          <p class="payment__descr">Стоимость доставки рассчитывается, исходя из веса, объёма груза и региона доставки.
+            Мы
+            обеспечиваем доставку
+            приобретенных Вами товаров по России и за пределы Российской Федерации.
+            Следовательно, каждая покупка, требующая сопровождения, будет иметь уникальные условия.</p>
+          <p class="payment__descr">Вы вскрываете упаковку при курьере, осматриваете на целостность и соответствие
+            указанной
+            комплектации.</p>
+          <strong class="payment__subtitle">Самовывоз из магазина</strong>
+          <p class="payment__descr">Самовывоз осуществляется по предварительному звонку, по адресу: Москва,
+            Спартаковский
+            переулок, дом 2, строение 1.
+            Забрать покупку может ваш друг или родственник, который знает номер и имя, на кого он оформлен.</p>
+          <strong class="payment__subtitle">Почтовая доставка</strong>
+          <p class="payment__descr">Если в вашем городе не действует курьерская служба, то вы можете заказать доставку
+            через
+            почту России. Сразу по прибытии
+            товара, на ваш адрес придет извещение о посылке.
+            Перед получением вы можете оценить состояние коробки (не вскрывая): вес, целостность. Если вам кажется, что
+            заказ
+            не
+            соответствует параметрам или коробка повреждена, попросите сотрудника почты составить акт о вскрытии.
+            Один заказ может содержать не больше 10 позиций и его стоимость не должна превышать 100 тысяч рублей.</p>
+          <strong class="payment__subtitle">Срок доставки</strong>
+          <p class="payment__descr">В зависимости от вашего региона проживания, доставка занимает от 1 дня.</p>
+        </div>
+      </section>
+      @include('partials/universal/discount.html')
+    </main>
+    @include('partials/universal/footer.html')
+  </div>
+  <script src="js/vendor.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

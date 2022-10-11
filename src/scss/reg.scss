@@ -1,0 +1,16 @@
+// default
+
+@import "./components/global";
+@import "./components/_default/vendor";
+
+// Компоненты страницы
+
+@import "./components/universal/preloader";
+@import "./components/universal/header";
+@import "./components/reg";
+@import "./components/universal/footer";
+@import "./components/universal/popup";
+
+// Универсальные стили
+
+@import "./components/_default/universal";
