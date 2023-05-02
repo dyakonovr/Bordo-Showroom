@@ -1,0 +1,152 @@
+.footer {
+  margin: 80px 0 0;
+  padding: var(--small-offset) 0;
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include small-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__left {
+    @include big-desktop {
+      margin: 0 0 var(--big-offset) 0;
+    }
+  }
+
+  &__logo {
+    margin: 0 0 var(--medium-offset) 0;
+  }
+
+  &__item {
+    width: fit-content;
+
+    &:not(:last-child),
+    :not(:first-child) {
+      margin: 0 0 var(--smallest-offset) 0;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+
+    @include small-tablet {
+      margin: 0 0 var(--big-offset) 0;
+    }
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__faq {
+    margin: 0 var(--small-offset);
+
+    @include small-tablet {
+      margin: 0;
+    }
+  }
+
+  &-adress {
+    margin: 0 var(--small-offset);
+    max-width: 340px;
+
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin: var(--smallest-offset) 0 0 0;
+    }
+
+    &__link {
+      font-size: 13px;
+    }
+
+    @include mobile {
+      margin: var(--medium-offset) 0 0 0;
+    }
+  }
+
+  &__subtitle {
+    margin: 0 0 var(--smallest-offset) 0;
+    font: var(--font-solomon-regular);
+  }
+
+  &__link {
+    font: var(--font-solomon-regular);
+    font-size: 14px;
+    color: var(--color-dusty-gray);
+  }
+
+  &__right {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  &__input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+  }
+
+  &__mail {
+    outline: none;
+    border: none;
+    padding: 15px 50px 15px 15px;
+    width: 300px;
+    height: 40px;
+    background-color: var(--color-alabaster);
+
+    &::placeholder {
+      color: #d6d6d6;
+    }
+
+    @include mobile {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  &__submit {
+    position: absolute;
+    right: 15px;
+    bottom: 8px;
+    border: none;
+    width: 23px;
+    height: 23px;
+    background: transparent;
+    background-image: url("@svg/mail.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  &__descr {
+    margin: var(--smallest-offset) 0 var(--medium-offset) 0;
+    font: var(--font-solomon-light);
+    font-size: 14px;
+    color: var(--color-dusty-gray);
+  }
+
+  &__share {
+    display: block;
+    font: var(--font-solomon-semibold);
+    font-size: 15px;
+
+    &:not(:last-child) {
+      margin: 0 0 var(--smallest-offset) 0;
+    }
+  }
+
+  @include mobile {
+    margin: 0;
+  }
+}

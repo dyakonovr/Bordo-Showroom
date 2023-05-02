@@ -1,43 +1,43 @@
 <footer class="footer" id="footer">
   <div class="container footer__container">
-    <ul class="footer__left">
-      <li class="footer__item"><img src="../img/logo.svg" alt="Bordo Showroom Logo" class="footer__logo"></li>
-      <li class="footer__item icon-inst"><a href="https://instagram.com/bordo.showroom" target="_blank">Instagram</a>
+    <ul class="footer__left list-reset">
+      <li class="footer__item"><a href="index.html"><img src="@svg/logo.svg" alt="Bordo Showroom Logo" class="footer__logo" /></a></li>
+      <li class="footer__item icon-inst link-hover"><a href="https://instagram.com/bordo.showroom" target="_blank">Instagram</a>
       </li>
-      <li class="footer__item icon-whats"><a href="https://wa.me/+79697775200">WhatsApp</a></li>
-      <li class="footer__item"><a href="tel:+79697775200">+7 (969) 777-52-00</a></li>
+      <li class="footer__item icon-whats link-hover"><a href="https://wa.me/+79697775200">WhatsApp</a></li>
+      <li class="footer__item"><a href="tel:+79697775200" class="link-hover">+7 (969) 777-52-00</a></li>
     </ul>
     <div class="footer__wrapper">
-      <ul class="footer__faq">
+      <ul class="footer__faq list-reset">
         <li class="footer__subtitle">Клиентам</li>
-        <li class="footer__item"><a href="about.html" class="footer__link">О магазине</a>
+        <li class="footer__item"><a href="about.html" class="footer__link link-hover">О магазине</a>
         </li>
-        <li class="footer__item footer__item"><a href="#" class="footer__link">Политика</a></li>
-        <li class="footer__item footer__item"><a href="#" class="footer__link">Вопросы</a></li>
-        <li class="footer__item footer__item"><a href="delivery.html" class="footer__link">Оплата и
+        <li class="footer__item footer__item"><a href="#" class="footer__link link-hover">Политика</a></li>
+        <li class="footer__item footer__item"><a href="#" class="footer__link link-hover">Вопросы</a></li>
+        <li class="footer__item footer__item"><a href="delivery.html" class="footer__link link-hover">Оплата и
             доставка</a></li>
       </ul>
       <div class="footer-adress">
         <strong class="footer__subtitle footer__item">Наши адреса</strong>
-        <ul class="footer-adress__content">
+        <ul class="footer-adress__content list-reset">
           <li class="footer__item footer-adress__link"><a target="_blank" href="https://goo.gl/maps/PJVwdNW1aTXDxXpQ7"
-              class="footer__link">г.
+              class="footer__link link-hover">г.
               Москва<br>пр-т Андропова,
               22,<br>ТРЦ
               "Нора"</a></li>
           <li class="footer__item footer-adress__link"><a target="_blank" href="https://goo.gl/maps/cDuJCjjjQWtcJXtMA"
-              class="footer__link">г.
+              class="footer__link link-hover">г.
               Егорьевск<br>ул. Советская,
               121,<br>ТЦ "Егорьевский Пассаж"
             </a></li>
           <li class="footer__item footer-adress__link"><a target="_blank" href="https://goo.gl/maps/SLKeMZtodQ84iSVEA"
-              class="footer__link">г.
+              class="footer__link link-hover">г.
               Орехово-Зуево<br>ул.
               Ленина,
               84,<br>ТЦ "Морозовский"
             </a></li>
           <li class="footer__item footer-adress__link"><a target="_blank" href="https://goo.gl/maps/Qsg7ZG3TwZRWVagc8"
-              class="footer__link">г.
+              class="footer__link link-hover">г.
               Куровское<br>ул.
               Вокзальная, 8,<br>ТЦ
               "Апельсин"
@@ -52,14 +52,16 @@
         <input type="hidden" name="project_name" value="Test">
         <input type="hidden" name="admin_email" value="form-data@inbox.ru">
         <input type="hidden" name="form_subject" value="Подписаться на новости">
-        <input type="email" class="footer__mail" name="mail" placeholder="Введите e-mail" data-validate-field="mail" />
-        <input type="submit" value="" class="footer__submit">
+        <div class="footer__input-wrapper">
+          <input type="email" class="footer__mail" name="mail" placeholder="Введите e-mail" data-validate-field="mail" />
+          <input type="submit" value="" class="footer__submit">
+        </div>
       </form>
-      <p class="footer__descr">Подписываясь на рассылку, вы соглашаетесь<br>с условиями <a href="#">Политики
+      <p class="footer__descr">Подписываясь на рассылку, вы соглашаетесь<br>с условиями <a href="#" class="link-hover">Политики
           конфиденциальности</a></p>
-      <span class="footer__share"><a href="https://vk.com/share.php?url=http://youtube.com" target="_blank">Поделиться
+      <span class="footer__share"><a href="https://vk.com/share.php?url=http://youtube.com" target="_blank" class="link-hover">Поделиться
           Вконтакте</a></span>
-      <span class="footer__share"><a href="#">Поделиться в Instagram</a></span>
+      <span class="footer__share"><a href="#" class="link-hover">Поделиться в Instagram</a></span>
     </div>
   </div>
   @include('popup.html', {

@@ -1,128 +1,122 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#111111">
-  @include('partials/universal/favicon.html')
-  <title>Bordo</title>
-  <link rel="stylesheet" href="css/order.css">
-</head>
+@include('partials/universal/head.html', {
+"stylesFileName": "order",
+"scriptsFileName": "",
+"title": "Каталог",
+"font_urls": ["SolomonSans-Book", "SolomonSans-Regular", "SolomonSans-SemiBold", "TTNormsPro-Medium",
+"TTNormsPro-Regular", "ALS-Alumna-reg"],
+"preloader_img_url": ""
+})
 
 <body>
-  <div class="site-container">
-    @include('partials/universal/preloader.html')
-    @include('partials/universal/header.html')
-    <main>
-      <section class="order">
-        <div class="container order__container custom-container">
-          <h1 class="order__title subtitle">Оформление заказа</h1>
-          <div class="order__wrap">
-            <div class="order__left">
-              <form action="mail.php" class="order__form">
-                <h2 class="order__subtitle">Моя информация</h2>
-                <div class="order-section">
-                  <div class="order-wrapper"><label for="surname" class="order__label">Фамилия</label>
-                    <input type="text" class="order__input custom-input" name="surname" id="surname" />
-                  </div>
-                  <div class="order-wrapper"><label for="name" class="order__label">Имя</label>
-                    <input type="text" class="order__input custom-input" name="name" id="name" />
-                  </div>
-                  <div class="order-wrapper"><label for="mail" class="order__label">Электорнная почта</label>
-                    <input type="email" class="order__input custom-input" name="mail" id="mail" />
-                  </div>
-                  <div class="order-wrapper"><label for="number" class="order__label">Телефон</label>
-                    <input type="email" class="order__input custom-input" name="number" id="number" />
+  @include('partials/universal/preloader.html')
+  @include('partials/universal/header.html')
+  <main class="main">
+    <section class="order">
+      <div class="container order__container custom-container">
+        <h1 class="order__title subtitle">Оформление заказа</h1>
+        <div class="order__wrap">
+          <div class="order__left">
+            <form action="mail.php" class="order__form">
+              <h2 class="order__subtitle">Моя информация</h2>
+              <div class="order-section">
+                <div class="order-wrapper"><label for="surname" class="order__label">Фамилия</label>
+                  <input type="text" class="order__input custom-input" name="surname" id="surname" />
+                </div>
+                <div class="order-wrapper"><label for="name" class="order__label">Имя</label>
+                  <input type="text" class="order__input custom-input" name="name" id="name" />
+                </div>
+                <div class="order-wrapper"><label for="mail" class="order__label">Электорнная почта</label>
+                  <input type="email" class="order__input custom-input" name="mail" id="mail" />
+                </div>
+                <div class="order-wrapper"><label for="number" class="order__label">Телефон</label>
+                  <input type="email" class="order__input custom-input" name="number" id="number" />
+                </div>
+              </div>
+              <h2 class="order__subtitle">Адрес доставки</h2>
+              <div class="order-section">
+                <div class="order-wrapper"><label for="region" class="order__label">Регион</label>
+                  <input type="text" class="order__input custom-input" name="region" id="region" />
+                </div>
+                <div class="order-wrapper"><label for="locality" class="order__label">Населенный пункт</label>
+                  <input type="text" class="order__input custom-input" name="locality" id="locality" />
+                </div>
+                <div class="order-wrapper"><label for="street" class="order__label">Улица</label>
+                  <input type="email" class="order__input custom-input" name="street" id="street" />
+                </div>
+                <div class="order-wrapper">
+                  <label for="home" class="order__label">Дом</label>
+                  <input type="email" class="order__input custom-input" name="home" id="home" />
+                </div>
+                <div class="order-wrapper">
+                  <label for="apartment" class="order__label">Квартира/офис</label>
+                  <input type="email" class="order__input custom-input" name="apartment" id="apartment" />
+                </div>
+              </div>
+              <div class="order__lower">
+                <div class="order__checkboxes">
+                  <h2 class="order__subtitle">Способ доставки</h2>
+                  <div class="order__checkbox-group">
+                    <label class="custom-checkbox order__checkbox">
+                      <input type="radio" name="method" class="custom-checkbox__field"
+                        value="Доставка с примеркой по Москве и МО">
+                      <span class="custom-checkbox__content">Доставка с примеркой по Москве и МО</span>
+                    </label>
+                    <label class="custom-checkbox order__checkbox">
+                      <input type="radio" name="method" class="custom-checkbox__field"
+                        value="СДЭК до Пункта Выдачи Заказов">
+                      <span class="custom-checkbox__content">СДЭК до Пункта Выдачи Заказов</span>
+                    </label>
+                    <label class="custom-checkbox order__checkbox">
+                      <input type="radio" name="method" class="custom-checkbox__field">
+                      <span class="custom-checkbox__content">СДЭК курьер до двери</span>
+                    </label>
+                    <label class="custom-checkbox order__checkbox">
+                      <input type="radio" name="method" class="custom-checkbox__field">
+                      <span class="custom-checkbox__content">Почта России</span>
+                    </label>
                   </div>
                 </div>
-                <h2 class="order__subtitle">Адрес доставки</h2>
-                <div class="order-section">
-                  <div class="order-wrapper"><label for="region" class="order__label">Регион</label>
-                    <input type="text" class="order__input custom-input" name="region" id="region" />
-                  </div>
-                  <div class="order-wrapper"><label for="locality" class="order__label">Населенный пункт</label>
-                    <input type="text" class="order__input custom-input" name="locality" id="locality" />
-                  </div>
-                  <div class="order-wrapper"><label for="street" class="order__label">Улица</label>
-                    <input type="email" class="order__input custom-input" name="street" id="street" />
-                  </div>
-                  <div class="order-wrapper">
-                    <label for="home" class="order__label">Дом</label>
-                    <input type="email" class="order__input custom-input" name="home" id="home" />
-                  </div>
-                  <div class="order-wrapper">
-                    <label for="apartment" class="order__label">Квартира/офис</label>
-                    <input type="email" class="order__input custom-input" name="apartment" id="apartment" />
-                  </div>
-                </div>
-                <div class="order__lower">
-                  <div class="order__checkboxes">
-                    <h2 class="order__subtitle">Способ доставки</h2>
-                    <div class="order__checkbox-group">
-                      <label class="custom-checkbox order__checkbox">
-                        <input type="radio" name="method" class="custom-checkbox__field"
-                          value="Доставка с примеркой по Москве и МО">
-                        <span class="custom-checkbox__content">Доставка с примеркой по Москве и МО</span>
-                      </label>
-                      <label class="custom-checkbox order__checkbox">
-                        <input type="radio" name="method" class="custom-checkbox__field"
-                          value="СДЭК до Пункта Выдачи Заказов">
-                        <span class="custom-checkbox__content">СДЭК до Пункта Выдачи Заказов</span>
-                      </label>
-                      <label class="custom-checkbox order__checkbox">
-                        <input type="radio" name="method" class="custom-checkbox__field">
-                        <span class="custom-checkbox__content">СДЭК курьер до двери</span>
-                      </label>
-                      <label class="custom-checkbox order__checkbox">
-                        <input type="radio" name="method" class="custom-checkbox__field">
-                        <span class="custom-checkbox__content">Почта России</span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="order__checkboxes">
-                    <h2 class="order__subtitle">Способ оплаты</h2>
-                    <div class="order__checkbox-group">
-                      <label class="custom-checkbox order__checkbox">
-                        <input type="radio" name="delivery" class="custom-checkbox__field" value="Картой курьеру">
-                        <span class="custom-checkbox__content">Картой курьеру</span>
-                      </label>
-                      <label class="custom-checkbox order__checkbox">
-                        <input type="radio" name="delivery" class="custom-checkbox__field" value="Наличными курьеру">
-                        <span class="custom-checkbox__content">Наличными курьеру</span>
-                      </label>
-                      <label class="custom-checkbox order__checkbox">
-                        <input type="radio" name="delivery" class="custom-checkbox__field" value="Оплата на сайте">
-                        <span class="custom-checkbox__content">Оплата на сайте</span>
-                      </label>
-                      <label class="custom-checkbox order__checkbox">
-                        <input type="radio" name="delivery" class="custom-checkbox__field" value="Переводом на карту">
-                        <span class="custom-checkbox__content">Переводом на карту</span>
-                      </label>
-                    </div>
+                <div class="order__checkboxes">
+                  <h2 class="order__subtitle">Способ оплаты</h2>
+                  <div class="order__checkbox-group">
+                    <label class="custom-checkbox order__checkbox">
+                      <input type="radio" name="delivery" class="custom-checkbox__field" value="Картой курьеру">
+                      <span class="custom-checkbox__content">Картой курьеру</span>
+                    </label>
+                    <label class="custom-checkbox order__checkbox">
+                      <input type="radio" name="delivery" class="custom-checkbox__field" value="Наличными курьеру">
+                      <span class="custom-checkbox__content">Наличными курьеру</span>
+                    </label>
+                    <label class="custom-checkbox order__checkbox">
+                      <input type="radio" name="delivery" class="custom-checkbox__field" value="Оплата на сайте">
+                      <span class="custom-checkbox__content">Оплата на сайте</span>
+                    </label>
+                    <label class="custom-checkbox order__checkbox">
+                      <input type="radio" name="delivery" class="custom-checkbox__field" value="Переводом на карту">
+                      <span class="custom-checkbox__content">Переводом на карту</span>
+                    </label>
                   </div>
                 </div>
-                <input type="submit" value="Оформить заказ" class="btn--primary btn order__btn">
-              </form>
-            </div>
-            <div class="order__right">
-              <p class="order__remark">Бесплатная доставка от 5&nbsp;000&nbsp;&#8381;</p>
-              <p class="order__descr">14-дневный период возврата товара, комиссия за возврат и возврат стоимости за
-                неотправленный товар. Прочитать о возврате
-                и возмещении стоимости товара.</p>
-              <strong class="order__text">Добавить промокод</strong>
-              <input type="text" class="order__promo-input custom-input promo-input-js" placeholder="Промокод">
-            </div>
+              </div>
+              <input type="submit" value="Оформить заказ" class="btn--primary btn order__btn">
+            </form>
+          </div>
+          <div class="order__right">
+            <p class="order__remark">Бесплатная доставка от 5&nbsp;000&nbsp;&#8381;</p>
+            <p class="order__descr">14-дневный период возврата товара, комиссия за возврат и возврат стоимости за
+              неотправленный товар. Прочитать о возврате
+              и возмещении стоимости товара.</p>
+            <strong class="order__text">Добавить промокод</strong>
+            <input type="text" class="order__promo-input custom-input promo-input-js" placeholder="Промокод">
           </div>
         </div>
-      </section>
-    </main>
-    @include('partials/universal/footer.html')
-  </div>
-  <script src="js/vendor.js"></script>
-  <script src="js/main.js"></script>
+      </div>
+    </section>
+  </main>
+  @include('partials/universal/footer.html')
 </body>
 
 </html>

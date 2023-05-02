@@ -11,22 +11,27 @@
   <link rel="stylesheet" href="css/item.css">
 </head>
 
+@include('partials/universal/head.html', {
+"stylesFileName": "item",
+"scriptsFileName": "",
+"title": "Товар!!!",
+"font_urls": ["SolomonSans-Book", "SolomonSans-Regular", "SolomonSans-SemiBold", "TTNormsPro-Medium",
+"TTNormsPro-Regular", "ALS-Alumna-reg"],
+"preloader_img_url": ""
+})
+
 <body>
-  <div class="site-container">
-    @include('partials/universal/preloader.html')
-    @include('partials/universal/header.html')
-    <main>
-      <section class="item">
-        <div class="container item__container">
-          <div class="item__upper"></div>
-        </div>
-      </section>
-      @include('partials/universal/lists.html')
-    </main>
-    @include('partials/universal/footer.html')
-  </div>
-  <script src="js/vendor.js"></script>
-  <script src="js/main.js"></script>
+  @include('partials/universal/preloader.html')
+  @include('partials/universal/header.html')
+  <main class="main">
+    <section class="item">
+      <div class="container item__container">
+        <div class="item__upper"></div>
+      </div>
+    </section>
+    @include('partials/universal/lists.html')
+  </main>
+  @include('partials/universal/footer.html')
 </body>
 
 </html>

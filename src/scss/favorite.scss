@@ -1,16 +1,72 @@
-// default
+// Стили для любой страницы
 
-@import "./components/global";
-@import "./components/_default/vendor";
+@import "./default/mixins";
+@import "./default/vars";
+@import "./default/fonts";
+@import "./default/vendor";
+@import "./default/settings";
+@import "./default/universal";
 
 // Компоненты страницы
+@import "./components/preloader";
+@import "./components/header";
+@import "./components/footer";
+@import "./components/popup";
 
-@import "./components/universal/preloader";
-@import "./components/universal/header";
-@import "./components/favorite";
-@import "./components/universal/footer";
-@import "./components/universal/popup";
+.favorite {
+  &__img {
+    width: 75px;
+    height: 100px;
 
-// Универсальные стили
+    @include mobile {
+      width: 130px;
+      height: 100%;
+    }
+  }
 
-@import "./components/_default/universal";
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--small-offset);
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include small-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__item {
+    display: flex;
+
+    @include mobile {
+      align-items: center;
+    }
+  }
+
+  &__content {
+    margin: 0 0 0 var(--small-offset);
+  }
+
+  &__name {
+    display: block;
+    margin: 0;
+  }
+
+  &__lower {
+    display: flex;
+    align-items: center;
+    margin: var(--small-offset) 0 0 0;
+  }
+
+  &__delete {
+    vertical-align: text-bottom;
+    margin: 0 0 0 var(--medium-offset);
+  }
+}

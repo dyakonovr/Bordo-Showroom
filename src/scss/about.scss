@@ -1,16 +1,25 @@
-// default
+// Стили для любой страницы
 
-@import "./components/global";
-@import "./components/_default/vendor";
+@import "./default/mixins";
+@import "./default/vars";
+@import "./default/fonts";
+@import "./default/vendor";
+@import "./default/settings";
+@import "./default/universal";
 
 // Компоненты страницы
+@import "./components/preloader";
+@import "./components/header";
+@import "./components/footer";
+@import "./components/popup";
 
-@import "./components/universal/preloader";
-@import "./components/universal/header";
-@import "./components/about";
-@import "./components/universal/footer";
-@import "./components/universal/popup";
+.info {
+  &__container {
+    padding: 0 95px;
+  }
 
-// Универсальные стили
-
-@import "./components/_default/universal";
+  &__text {
+    font: var(--font-solomon-regular);
+    color: var(--color-gray);
+  }
+}

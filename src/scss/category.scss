@@ -1,17 +1,89 @@
-// default
+// Стили для любой страницы
 
-@import "./components/global";
-@import "./components/_default/vendor";
+@import "./default/mixins";
+@import "./default/vars";
+@import "./default/fonts";
+@import "./default/vendor";
+@import "./default/settings";
+@import "./default/universal";
 
 // Компоненты страницы
 
-@import "./components/universal/preloader";
-@import "./components/universal/header";
-@import "./components/category";
-@import "./components/universal/type";
-@import "./components/universal/footer";
-@import "./components/universal/popup";
+@import "./components/preloader";
+@import "./components/header";
+@import "./components/type";
+@import "./components/footer";
+@import "./components/popup";
 
-// Универсальные стили
+.category {
+  &__wrapper {
+    display: flex;
 
-@import "./components/_default/universal";
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__filters {
+    margin: 0 var(--small-offset) 0 0;
+
+    @include mobile {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin: 0;
+    }
+  }
+
+  &__prop {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 var(--big-offset) 0;
+  }
+
+  &__subtitle {
+    margin: 0 0 var(--smallest-offset) 0;
+    font: var(--font-solomon-regular);
+    font-size: 18px;
+  }
+
+  &__label {
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin: 0 0 var(--smallest-offset) 0;
+    }
+  }
+
+  &__caption {
+    vertical-align: top;
+    padding-left: var(--smallest-offset);
+    font: var(--font-solomon-regular);
+    font-size: 14px;
+    color: var(--color-gray);
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: max-content;
+    margin: 0 0 0 var(--big-offset);
+    gap: var(--small-offset);
+
+    @include small-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      margin: 100px 0 0;
+    }
+  }
+
+  &__btn {
+    border: none;
+
+    @include mobile {
+      grid-column: span 2;
+    }
+  }
+}

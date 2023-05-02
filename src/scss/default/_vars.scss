@@ -1,0 +1,30 @@
+:root {
+  // Цвета
+  --color-black: #000;
+  --color-white: #fff;
+  --color-dusty-gray: #969696;
+  --color-gray: #858585;
+  --color-alabaster: #fbfbfb;
+
+  // Шрифты
+  --font-family: "Solomon", "ALS Alumna", "Norms";
+
+  --font-alumna: 400 16px "ALS Alumna";
+  --font-solomon-light: 300 16px "Solomon";
+  --font-solomon-regular: 400 16px "Solomon";
+  --font-solomon-semibold: 600 16px "Solomon";
+  --font-norms-medium: 500 16px "Norms";
+  --font-norms-regular: 400 16px "Norms";
+
+  // Отступы
+
+  --big-offset: 50px;
+  --medium-offset: 35px;
+  --small-offset: 25px;
+  --smallest-offset: 10px;
+
+  // Размеры контейнера
+  --content-width: 1120px;
+  --container-offset: 15px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+}

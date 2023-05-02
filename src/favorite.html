@@ -1,33 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#111111">
-  <title>Bordo</title>
-  <link rel="stylesheet" href="css/favorite.css">
-</head>
+@include('partials/universal/head.html', {
+"stylesFileName": "favorite",
+"scriptsFileName": "",
+"title": "Избранное",
+"font_urls": ["SolomonSans-Book", "SolomonSans-Regular", "SolomonSans-SemiBold", "TTNormsPro-Medium",
+"TTNormsPro-Regular", "ALS-Alumna-reg"],
+"preloader_img_url": ""
+})
 
 <body>
-  <div class="site-container">
-    @include('partials/universal/preloader.html')
-    @include('partials/universal/header.html')
-    <main>
-      <section class="favorite">
-        <div class="container">
-          <h1 class="favorite__title subtitle">Избранное</h1>
-          <ul class="favorite__list">
-          </ul>
-        </div>
-      </section>
-    </main>
-    @include('partials/universal/footer.html')
-  </div>
-  <script src="js/vendor.js"></script>
-  <script src="js/main.js"></script>
+  @include('partials/universal/preloader.html')
+  @include('partials/universal/header.html')
+  <main class="main">
+    <section class="favorite">
+      <div class="container">
+        <h1 class="favorite__title subtitle">Избранное</h1>
+        <ul class="favorite__list list-reset">
+        </ul>
+      </div>
+    </section>
+  </main>
+  @include('partials/universal/footer.html')
 </body>
 
 </html>

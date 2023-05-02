@@ -11,48 +11,53 @@
   <link rel="stylesheet" href="css/reg.css">
 </head>
 
+@include('partials/universal/head.html', {
+"stylesFileName": "reg",
+"scriptsFileName": "",
+"title": "Регистрация",
+"font_urls": ["SolomonSans-Book", "SolomonSans-Regular", "SolomonSans-SemiBold", "TTNormsPro-Medium",
+"TTNormsPro-Regular", "ALS-Alumna-reg"],
+"preloader_img_url": ""
+})
+
 <body>
-  <div class="site-container">
-    @include('partials/universal/preloader.html')
-    @include('partials/universal/header.html')
-    <main>
-      <section class="reg">
-        <div class="reg-container">
-          <h1 class="reg__title subtitle">Регистрация</h1>
-          <form class="reg__form form-reg" action="mail.php" enctype="multipart/form-data" method="POST">
-            <input type="hidden" name="project_name" value="Test">
-            <input type="hidden" name="admin_email" value="form-data@inbox.ru">
-            <input type="hidden" name="form_subject" value="Регистрация">
-            <div class="reg__wrapper">
-              <label for="login" class="reg__label">Имя пользователя</label>
-              <input type="text" name="login" id="login" class="reg__input custom-input" data-validate-field="login">
-            </div>
-            <div class="reg__wrapper">
-              <label for="password" class="reg__label">Пароль</label>
-              <input type="password" name="password" id="password" class="reg__input custom-input"
-                data-validate-field="pass">
-            </div>
-            <div class="reg__wrapper">
-              <label for="rep-password" class="reg__label">Подтверждение пароля</label>
-              <input type="password" name="rep_password" id="rep-password" class="reg__input custom-input"
-                data-validate-field="repeat_pass">
-            </div>
-            <input type="submit" value="Зарегистроваться" class="reg__btn btn--primary">
-          </form>
-        </div>
-        @include('partials/universal/popup.html', {
-        "title": "Регистрация завершена",
-        "text": "Пожалуйста, проверьте почту или СМС сообщения на телефоне",
-        "btn-text": "В личный кабинет",
-        "class": "reg-popup",
-        "link": "profile.html"
-        })
-      </section>
-    </main>
-    @include('partials/universal/footer.html')
-  </div>
-  <script src="js/vendor.js"></script>
-  <script src="js/main.js"></script>
+  @include('partials/universal/preloader.html')
+  @include('partials/universal/header.html')
+  <main class="main">
+    <section class="reg">
+      <div class="reg-container">
+        <h1 class="reg__title subtitle">Регистрация</h1>
+        <form class="reg__form form-reg" action="mail.php" enctype="multipart/form-data" method="POST">
+          <input type="hidden" name="project_name" value="Test">
+          <input type="hidden" name="admin_email" value="form-data@inbox.ru">
+          <input type="hidden" name="form_subject" value="Регистрация">
+          <div class="reg__wrapper">
+            <label for="login" class="reg__label">Имя пользователя</label>
+            <input type="text" name="login" id="login" class="reg__input custom-input" data-validate-field="login">
+          </div>
+          <div class="reg__wrapper">
+            <label for="password" class="reg__label">Пароль</label>
+            <input type="password" name="password" id="password" class="reg__input custom-input"
+              data-validate-field="pass">
+          </div>
+          <div class="reg__wrapper">
+            <label for="rep-password" class="reg__label">Подтверждение пароля</label>
+            <input type="password" name="rep_password" id="rep-password" class="reg__input custom-input"
+              data-validate-field="repeat_pass">
+          </div>
+          <input type="submit" value="Зарегистроваться" class="reg__btn btn--primary">
+        </form>
+      </div>
+      @include('partials/universal/popup.html', {
+      "title": "Регистрация завершена",
+      "text": "Пожалуйста, проверьте почту или СМС сообщения на телефоне",
+      "btn-text": "В личный кабинет",
+      "class": "reg-popup",
+      "link": "profile.html"
+      })
+    </section>
+  </main>
+  @include('partials/universal/footer.html')
 </body>
 
 </html>

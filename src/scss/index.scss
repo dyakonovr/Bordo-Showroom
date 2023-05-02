@@ -1,18 +1,69 @@
-// default
+// Стили для любой страницы
 
-@import "./components/global";
-@import "./components/_default/vendor";
+@import "./default/mixins";
+@import "./default/vars";
+@import "./default/fonts";
+@import "./default/vendor";
+@import "./default/settings";
+@import "./default/universal";
 
 // Компоненты страницы
+@import "./components/preloader";
+@import "./components/header";
+@import "./components/type";
+@import "./components/discount";
+@import "./components/footer";
+@import "./components/popup";
 
-@import "./components/universal/preloader";
-@import "./components/universal/header";
-@import "./components/index-slider";
-@import "./components/universal/type";
-@import "./components/universal/discount";
-@import "./components/universal/footer";
-@import "./components/universal/popup";
+.swiper {
+  .swiper-pagination-bullet-active {
+    background: var(--color-white);
+  }
+}
 
-// Универсальные стили
+.slider {
+  .slide {
+    &__img {
+      width: 100%;
+      height: 100%;
+    }
 
-@import "./components/_default/universal";
+    &__content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+
+      @include tablet {
+        top: 60%;
+      }
+    }
+
+    &__title {
+      margin: 0;
+      font: var(--font-alumna);
+      font-size: 70px;
+      color: var(--color-white);
+
+      @include big-desktop {
+        font-size: 50px;
+      }
+
+      @include tablet {
+        font-size: 30px;
+      }
+    }
+
+    &__descr {
+      margin: 0;
+      font: var(--font-solomon-regular);
+      font-size: 20px;
+      color: var(--color-white);
+
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+}

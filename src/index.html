@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#111111">
-  @include('partials/universal/favicon.html')
-  <title>Bordo</title>
-  <link rel="stylesheet" href="css/index.css">
-</head>
+@include('partials/universal/head.html', {
+"stylesFileName": "index",
+"scriptsFileName": "index",
+"title": "Bordo Showroom",
+"font_urls": ["SolomonSans-Book", "SolomonSans-Regular", "SolomonSans-SemiBold", "TTNormsPro-Medium",
+"TTNormsPro-Regular", "ALS-Alumna-reg"],
+"preloader_img_url": "@svg/logo.svg"
+})
 
 <body>
-  <div class="site-container">
-    @include('partials/universal/preloader.html')
-    @include('partials/universal/header.html')
-    <main>
-      @include('partials/index/slider.html')
-      @include('partials/universal/lists.html')
-      @include('partials/universal/discount.html')
-    </main>
-    @include('partials/universal/footer.html')
-  </div>
-  <script src="js/vendor.js"></script>
-  <script src="js/main.js"></script>
+  @include('partials/universal/preloader.html')
+  @include('partials/universal/header.html')
+  <main class="main">
+    @include('partials/index/slider.html')
+    @include('partials/universal/lists.html')
+    @include('partials/universal/discount.html')
+  </main>
+  @include('partials/universal/footer.html')
 </body>
 
 </html>

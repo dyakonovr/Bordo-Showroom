@@ -1,16 +1,150 @@
-// default
+// Стили для любой страницы
 
-@import "./components/global";
-@import "./components/_default/vendor";
+@import "./default/mixins";
+@import "./default/vars";
+@import "./default/fonts";
+@import "./default/vendor";
+@import "./default/settings";
+@import "./default/universal";
 
 // Компоненты страницы
 
-@import "./components/universal/preloader";
-@import "./components/universal/header";
-@import "./components/cart";
-@import "./components/universal/footer";
-@import "./components/universal/popup";
+@import "./components/preloader";
+@import "./components/header";
+@import "./components/footer";
+@import "./components/popup";
 
-// Универсальные стили
+.cart {
+  &__title {
+    margin: 0 0 var(--big-offset) 0;
+  }
 
-@import "./components/_default/universal";
+  &__list {
+    margin: 0 0 var(--big-offset) 0;
+  }
+
+  &-item {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 4fr 2fr 2fr 1fr 1fr;
+
+    &:not(:last-child) {
+      margin: 0 0 var(--medium-offset) 0;
+    }
+
+    &__img {
+      width: 75px;
+      height: 100px;
+    }
+
+    &__name {
+      display: block;
+      margin: var(--smallest-offset) 0 0 0;
+    }
+
+    &__price {
+      font-size: 22px;
+      color: var(--color-black);
+    }
+
+    &__select {
+      width: 100px;
+      height: 40px;
+
+      @include small-tablet {
+        width: 80px;
+      }
+    }
+
+    &__counter {
+      display: flex;
+      width: 100px;
+      height: 40px;
+    }
+
+    &__btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      width: 20px;
+      height: 100%;
+      background-color: var(--color-alabaster);
+      cursor: pointer;
+
+      &--minus {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+        &::before {
+          content: "";
+          display: block;
+          width: 10px;
+          height: 2px;
+          background-color: var(--color-gray);
+        }
+      }
+
+      &--plus {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          display: block;
+          width: 10px;
+          height: 2px;
+          background-color: var(--color-gray);
+        }
+
+        &::after {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    &__number {
+      border: none;
+      border-radius: 0;
+      width: 50px;
+      height: 100%;
+      text-align: center;
+      color: var(--color-dusty-gray);
+      background-color: var(--color-alabaster);
+    }
+
+    &__delete {
+      margin: 0 0 0 auto;
+
+      @include small-tablet {
+        justify-self: center;
+        margin-left: 0;
+      }
+    }
+
+    @include tablet {
+      grid-column-gap: 20px;
+      grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr;
+    }
+
+    @include small-tablet {
+      grid-template-columns: 1.5fr 2fr 1fr 1fr 1fr 1fr;
+    }
+
+    @include mobile {
+      justify-items: center;
+      grid-row-gap: 20px;
+      grid-template-columns: 1fr 2fr 1fr;
+    }
+  }
+
+  &__btn {
+    @include mobile {
+      width: 100%;
+      max-width: 243px;
+    }
+  }
+}

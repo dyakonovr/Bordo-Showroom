@@ -4,7 +4,7 @@
   padding: 0;
   width: var(--burger-width);
   height: var(--burger-height);
-  color: #000;
+  color: var(--color-main);
   background-color: transparent;
   cursor: pointer;
 
@@ -55,9 +55,5 @@
       transform: scale(0);
       transition: transform 0.3s ease-in-out;
     }
-  }
-
-  @include small-screen {
-    z-index: 16;
   }
 }

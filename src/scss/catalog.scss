@@ -1,18 +1,53 @@
-// default
+// Стили для любой страницы
 
-@import "./components/global";
-@import "./components/_default/vendor";
+@import "./default/mixins";
+@import "./default/vars";
+@import "./default/fonts";
+@import "./default/vendor";
+@import "./default/settings";
+@import "./default/universal";
 
 // Компоненты страницы
 
-@import "./components/universal/preloader";
-@import "./components/universal/header";
-@import "./components/catalog";
-@import "./components/universal/discount";
-@import "./components/universal/type";
-@import "./components/universal/footer";
-@import "./components/universal/popup";
+@import "./components/preloader";
+@import "./components/header";
+@import "./components/discount";
+@import "./components/type";
+@import "./components/footer";
+@import "./components/popup";
 
-// Универсальные стили
+.roster {
+  &__top {
+    margin: var(--big-offset) 0;
+  }
 
-@import "./components/_default/universal";
+  &__title {
+    margin: 0 0 var(--small-offset) 0;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--smallest-offset);
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include small-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__item {
+    font: var(--font-solomon-regular);
+
+    &:not(:last-child) {
+      margin: 0 var(--medium-offset) 0 0;
+    }
+  }
+
+  &__link {
+    color: var(--color-gray);
+  }
+}
